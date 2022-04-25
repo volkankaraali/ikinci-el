@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthProviderContext';
 function RequireAuth() {
   const { auth } = useAuth();
   const location = useLocation();
-
+  console.log(auth.authToken);
   //if authcontext have a token that user profile page will be open if is not will be nagivate to login
   return (
     auth?.authToken

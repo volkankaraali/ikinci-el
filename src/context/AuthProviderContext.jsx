@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
 
   }, []);
 
-  console.log(JSON.stringify(auth));
+  //console.log(auth);
 
   const values = {
     auth,

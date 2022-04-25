@@ -13,7 +13,7 @@ function RegisterLoginForm(props) {
 
       validationSchema={LoginAndRegisterSchema}
       onSubmit={(auth, { resetForm }) => {
-        props.setRegister(auth);
+        props.getRegisterFunc(auth);
         resetForm();
       }}
     >

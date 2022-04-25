@@ -10,3 +10,36 @@ body,html{
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@400;700&display=swap');
 
 @import '_register';
+@import '_login';
+
+
+.errormes{
+    display: flex;
+    align-items: center;
+    height: 60px;
+    width: 355px;
+    border-radius: 10px !important;
+    padding: 12px 19px !important;
+    box-shadow: 0px 3px 12px #1E36482E !important;
+    background-color: #ffe5e5 !important;
+    color: #f77474;
+    svg{
+        margin-right: 10px;
+    }
+}
+
+.successmes{
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    width: 355px;
+    border-radius: 10px !important;
+    padding: 12px 19px !important;
+    box-shadow: 0px 3px 12px #1E36482E !important;
+    background-color: green !important;
+    color: white;
+    svg{
+        margin-right: 10px;
+    }
+}

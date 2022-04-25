@@ -5,5 +5,5 @@ export default axios.create({ baseURL });
 
 export const URL = {
   register: 'auth/local/register',
-
+  login: 'auth/local',
 };
