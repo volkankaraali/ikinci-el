@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
-import { useAuth } from '../context/AuthProvider';
+import { useAuth } from '../context/AuthProviderContext';
 
 function RequireAuth() {
   const { auth } = useAuth();

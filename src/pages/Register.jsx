@@ -1,13 +1,51 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import registerLoginImage from '../images/registerLoginImage.png';
-import RegisterForm from '../components/RegisterForm';
+import RegisterLoginForm from '../components/RegisterLoginForm';
 import Logo from '../constant/icons/Logo';
-// import { Button, useToast } from '@chakra-ui/react';
-// import ExclamationMark from '../constant/icons/ExclamationMark';
+import { useAuth } from '../context/AuthProviderContext';
+import { useNavigate } from 'react-router-dom';
+import { postRegister } from '../services/userService';
+
+import displayErrorMess from '../hooks/displayErrorMess';
 
 function Register() {
-  //const toast = useToast();
+
+  const navigator = useNavigate();
+
+  const { auth, setAuth } = useAuth();
+  const [loading, setLoading] = useState(false);
+
+  const setRegister = async (auth) => {
+    setLoading(true);
+    const res = await postRegister(auth.password, auth.email, auth.password);
+    console.log(res);
+    if (res.status === 400) {
+      console.log(res.message);
+      displayErrorMess(res.message);
+      setLoading(false);
+    }
+    else {
+      setAuth({ id: res.data?.user?.id, email: auth.email, authToken: res.data?.jwt });
+      localStorage.setItem('email', auth.email);
+      localStorage.setItem('id', res.data?.user?.id);
+      document.cookie = `Auth_Token=${res.data?.jwt}`;
+      setLoading(false);
+
+      setTimeout(() => {
+        navigator('/');
+      }, 2000);
+    }
+  };
+
+  useEffect(() => {
+    if (auth.authToken) {
+      return navigator('/');
+    }
+  }, []);
+
+
+
   return (
     <div className='register'>
       <div className='leftSide'>
@@ -16,23 +54,14 @@ function Register() {
       <div className='rightSide'>
         <Logo className='logo' />
 
-        <div className='registerInfo'>
-          <h1>Üye Ol</h1>
-          <p>Fırsatlardan yararlanmak için üye ol!</p>
-          <RegisterForm />
-          {/* <Button
-            onClick={() =>
-              toast({
-                render: () => (
-                  <div className='errormes'>
-                    <ExclamationMark />
-                    Emailinizi veya şifreniz hatalı.</div>
-                ),
-              })
-            }
-          >
-            Show Toast
-          </Button> */}
+        <div className='registerInfoDiv'>
+          <div className='title'>Üye Ol</div>
+          <div className='subTitle'>Fırsatlardan yararlanmak için üye ol!</div>
+          <RegisterLoginForm setRegister={setRegister} loading={loading} buttonText={'Üye Ol'} />
+          <div className='footer'>
+            Hesabın mı var? <span>Giriş yap</span>
+          </div>
+
         </div>
       </div>
     </div>

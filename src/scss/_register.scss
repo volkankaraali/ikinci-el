@@ -1,5 +1,3 @@
-$primaryColor:#f2f2f2;
-
 .register{
     display: flex;
 }
@@ -17,14 +15,14 @@ $primaryColor:#f2f2f2;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #FBFBFB;
+    background-color: #f2f2f2;
     
-    svg{
+    .logo{
         margin-bottom: 55px;
         margin-top: 135px;
     }
 
-    .registerInfo{
+    .registerInfoDiv{
         width: 569px;
         height: 554px;
         padding: 90px 70px;
@@ -32,8 +30,91 @@ $primaryColor:#f2f2f2;
         display: flex;
         flex-direction: column;
         align-items: center;
-
         font-family: 'Nunito';
+        border-radius: 8px;
+        box-shadow: 0px 3px 12px #1E36480A;
+
+        .title{
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .subTitle{
+            color: #525252;
+            font-size: 15px;
+            font-weight: 400;
+            margin-bottom: 50px;
+        }
+
+        .footer{
+            margin-top: 30px;
+            font-size: 15px;
+            span{
+                cursor: pointer;
+                font-weight: bold;
+                color: #4b9ce2;
+            }
+        }
+
+        .registerForm{
+            width: 389px;
+            display: flex;
+            flex-direction: column;
+
+            div{
+                display: flex;
+                flex-direction: column;
+
+
+                label{
+                    color: #525252;
+                    margin-bottom: 5px;
+                }
+                
+                input{
+                    color: #99A0A7;
+                    height: 45px;
+                    background-color: #F4F4F4;
+                    padding: 15px 12px;
+                    border-radius: 8px;
+                    outline-color: #4b9ce2;
+                }
+                input:focus{
+                    color: black;
+                    background-color: #f0f8ff;
+                }
+
+                span{
+                    color:#f77474 ;
+                    font-size: 12px;
+                }
+
+            }
+            div:nth-child(2){
+                margin-top: 15px;
+                margin-bottom: 30px;
+            }
+            
+            .submitBtn{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #4b9ce2 !important;
+                height: 45px;
+                border-radius: 8px;
+                color: white;
+            }
+            .submitBtn:disabled{
+                opacity: 0.3;
+            }   
+        }
+
+        .formError{
+            border:1px solid #f77474 !important;
+            background-color: #FFF2F2 !important;
+            color: #f77474 !important;
+        }
+
     }
 }
 .errormes{
@@ -60,6 +141,64 @@ $primaryColor:#f2f2f2;
 
     .rightSide{
         height: 100vh;
-        background-color: $primaryColor;
+        padding: 0px 10px;
+
+        svg{
+            margin-top: 28px;
+            margin-bottom: 24px;
+
+        }
+        .registerInfoDiv{
+            width: 355px;
+            height: 435px;
+            padding: 20px 22px;
+
+            .subTitle{
+                margin-bottom: 30px;
+            }
+
+            .registerForm{
+                div:nth-child(2){
+                    margin-bottom: 20px;
+                }
+            }
+
+            .registerForm{
+                width: 315px !important;
+            }
+        }
+
+        
+    }
+}
+
+@media screen and (max-width:320px){
+    .rightSide{
+        height: 100vh;
+        padding: 0px 8px;
+        
+
+        .registerInfoDiv{
+            width: 312px;
+            height: 435px;
+            padding: 20px 22px;
+
+            .subTitle{
+                margin-bottom: 30px;
+            }
+
+            .registerForm{
+                width: 290px !important;
+            }
+            .registerForm{
+                div:nth-child(2){
+                    margin-bottom: 20px;
+                }
+            }
+        }
+
+        .registerForm{
+            width: 315px !important;
+        }
     }
 }
