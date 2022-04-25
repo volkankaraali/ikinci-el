@@ -1,20 +1,18 @@
 import React from 'react';
 import { createStandaloneToast } from '@chakra-ui/react';
-import ExclamationMark from '../constant/icons/ExclamationMark';
 
 const toast = createStandaloneToast();
 
-const displayErrorMess = (errorMes) => (
+const useDisplaySuccessMess = (succesMes) => (
   toast({
     position: 'top-right',
     duration: 2000,
     render: () => (
-      <div className='errormes' >
-        <ExclamationMark />
-        {errorMes}
+      <div className='successmes' >
+        {succesMes}
       </div>
     ),
   })
 );
 
-export default displayErrorMess;
+export default useDisplaySuccessMess;

@@ -1,29 +1,36 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 
 import registerLoginImage from '../images/registerLoginImage.png';
 import Logo from '../constant/icons/Logo';
 import LoginForm from '../components/LoginForm';
 import { useAuth } from '../context/AuthProviderContext';
-import displaySuccessMess from '../hooks/displaySuccessMes';
-import displayErrorMess from '../hooks/displayErrorMess';
+import useDisplaySuccessMess from '../hooks/useDisplaySuccessMes';
+import useDisplayErrorMess from '../hooks/useDisplayErrorMess';
 import { getLogin } from '../services/userService';
 import { useNavigate } from 'react-router-dom';
+import useGetTokenFromCookie from '../hooks/useGetTokenFromCookie';
 
 
 
 function Login() {
 
   const navigator = useNavigate();
-  const { auth, setAuth } = useAuth();
+  const { setAuth } = useAuth();
   const [loading, setLoading] = useState(false);
+
+
+  useEffect(() => {
+    //if there is authtoken in cookie that will be navigate to home.
+    let token = useGetTokenFromCookie();
+    token && navigator('/');
+  }, []);
 
   const getLoginFunc = async (auth) => {
     setLoading(true);
     const res = await getLogin(auth.email, auth.password);
     if (res.status === 400) {
       console.log(res.message);
-      displayErrorMess(res.message);
+      useDisplayErrorMess(res.message);
       setLoading(false);
     }
     else {
@@ -31,19 +38,15 @@ function Login() {
       localStorage.setItem('email', auth.email);
       localStorage.setItem('id', res.data?.user?.id);
       document.cookie = `Auth_Token=${res.data?.jwt}`;
-      displaySuccessMess('Login success.');
+      useDisplaySuccessMess('Login success.');
       setLoading(false);
       setTimeout(() => {
         navigator('/');
-      }, 2000);
+      }, 3000);
     }
   };
 
-  useEffect(() => {
-    if (auth.authToken) {
-      return navigator('/');
-    }
-  }, [auth.authToken]);
+
 
 
   return (

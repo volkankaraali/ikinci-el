@@ -7,15 +7,23 @@ import { useAuth } from '../context/AuthProviderContext';
 import { useNavigate } from 'react-router-dom';
 import { getRegister } from '../services/userService';
 
-import displayErrorMess from '../hooks/displayErrorMess';
-import displaySuccessMess from '../hooks/displaySuccessMes';
+import useDisplayErrorMess from '../hooks/useDisplayErrorMess';
+import useDisplaySuccessMess from '../hooks/useDisplaySuccessMes';
+import useGetTokenFromCookie from '../hooks/useGetTokenFromCookie';
 
 function Register() {
 
   const navigator = useNavigate();
 
-  const { auth, setAuth } = useAuth();
+  const { setAuth } = useAuth();
   const [loading, setLoading] = useState(false);
+
+
+  useEffect(() => {
+    //if there is authtoken in cookie that will be navigate to home.
+    let token = useGetTokenFromCookie();
+    token && navigator('/');
+  }, []);
 
   const getRegisterFunc = async (auth) => {
     setLoading(true);
@@ -23,7 +31,7 @@ function Register() {
     console.log(res);
     if (res.status === 400) {
       console.log(res.message);
-      displayErrorMess(res.message);
+      useDisplayErrorMess(res.message);
       setLoading(false);
     }
     else {
@@ -32,18 +40,13 @@ function Register() {
       localStorage.setItem('id', res.data?.user?.id);
       document.cookie = `Auth_Token=${res.data?.jwt}`;
       setLoading(false);
-      displaySuccessMess('Registered successfully.');
+      useDisplaySuccessMess('Registered successfully.');
       setTimeout(() => {
         navigator('/');
       }, 2000);
     }
   };
 
-  useEffect(() => {
-    if (auth.authToken) {
-      return navigator('/');
-    }
-  }, [auth.authToken]);
 
   return (
     <div className='register'>
