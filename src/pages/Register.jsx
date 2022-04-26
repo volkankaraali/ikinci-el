@@ -43,7 +43,7 @@ function Register() {
       useDisplaySuccessMess('Registered successfully.');
       setTimeout(() => {
         navigator('/');
-      }, 2000);
+      }, 3000);
     }
   };
 
@@ -54,7 +54,7 @@ function Register() {
         <img src={registerLoginImage} alt="ikinci el" />
       </div>
       <div className='rightSide'>
-        <div className='logo'><Logo /></div>
+        <div className='logo'><Logo width={224} height={73} /></div>
 
 
         <div className='registerInfoDiv'>

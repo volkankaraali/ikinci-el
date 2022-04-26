@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStandaloneToast } from '@chakra-ui/react';
-import ExclamationMark from '../constant/icons/ExclamationMark';
+import ExclamationMarkIcon from '../constant/icons/ExclamationMarkIcon';
 
 const toast = createStandaloneToast();
 
@@ -10,7 +10,7 @@ const useDisplayErrorMess = (errorMes) => (
     duration: 2000,
     render: () => (
       <div className='errormes' >
-        <ExclamationMark />
+        <ExclamationMarkIcon />
         {errorMes}
       </div>
     ),

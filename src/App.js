@@ -14,15 +14,15 @@ function App() {
     <Routes>
       <Route path='/' element={<Layout/>}>
         <Route index element={<Home/>}/>
-        <Route path='login' element={<Login/>}/>
-        <Route path='register' element={<Register/>}/>
-        <Route path='productdetail/:id' element={<ProductDetail/>}/>
+        <Route path='detail/:id' element={<ProductDetail/>}/>
 
         <Route element={<RequireAuth/>}>
           <Route path='profile/:username' element={<UserProfile/>}/>
         </Route>
-
+        
       </Route>
+      <Route path='login' element={<Login/>}/>
+      <Route path='register' element={<Register/>}/>
     </Routes>
   );
 }

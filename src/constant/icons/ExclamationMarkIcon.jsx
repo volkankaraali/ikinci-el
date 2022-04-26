@@ -1,7 +1,6 @@
 import React from 'react';
 
-const ExclamationMark = (props) => (
-  // eslint-disable-next-line react/prop-types
+const ExclamationMarkIcon = (props) => (
   <svg width={props.size || 22} height={props.size || 22} viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M11 22C17.0751 22 22 17.0751 22 11C22 4.92487 17.0751 0 11 0C4.92487 0 0 4.92487 0 11C0 17.0751 4.92487 22 11 22Z" fill="#F77474" />
     <path d="M11 12.75C10.8011 12.75 10.6103 12.671 10.4697 12.5303C10.329 12.3897 10.25 12.1989 10.25 12V7C10.25 6.80109 10.329 6.61032 10.4697 6.46967C10.6103 6.32902 10.8011 6.25 11 6.25C11.1989 6.25 11.3897 6.32902 11.5303 6.46967C11.671 6.61032 11.75 6.80109 11.75 7V12C11.75 12.1989 11.671 12.3897 11.5303 12.5303C11.3897 12.671 11.1989 12.75 11 12.75V12.75Z" fill="white" />
@@ -9,4 +8,4 @@ const ExclamationMark = (props) => (
   </svg>
 
 );
-export default ExclamationMark;
+export default ExclamationMarkIcon;

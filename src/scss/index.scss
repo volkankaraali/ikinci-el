@@ -1,16 +1,15 @@
-body,html{
+*{
     margin: 0;
     padding: 0;
-    
-}
-*{
     box-sizing: border-box;
+    font-family: 'Nunito';
 }
 //font import
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@400;700&display=swap');
 
 @import '_register';
 @import '_login';
+@import '_header';
 
 
 .errormes{
