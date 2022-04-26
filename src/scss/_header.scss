@@ -27,7 +27,7 @@ header{
                 font-size: 15px;   
             }
 
-            :nth-child(1){
+            .addProduct{
                 margin-right: 10px;
             }
         }
@@ -35,3 +35,36 @@ header{
     
 
 }
+
+@media screen and (max-width:375px) {
+    header{
+        .container{
+            margin:0 10px;
+
+            .menu{
+
+
+                .addProduct{
+                    width: 40px;
+                    svg{
+                        margin-right:0 ;
+                    }
+                    .addProductText{
+                        display: none;
+                    }
+                }
+
+                .myProfile{
+                    width: 116px;
+                    svg{
+                        margin-right: 5px;
+                    }
+                }
+
+            }
+        }
+
+
+    }
+}
+    

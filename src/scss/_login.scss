@@ -119,71 +119,83 @@
 
 @media screen and (max-width:375px){
 
+    .login{
 
-    .leftSide{
-        display: none;
-    }
-
-    .rightSide{
-        height: 100vh;
-        padding: 0px 10px;
-
-        svg{
-            margin-top: 28px;
-            margin-bottom: 24px;
-
+        .leftSide{
+            display: none;
         }
-        .registerInfoDiv{
-            width: 355px;
-            height: 435px;
-            padding: 20px 22px;
+    
+        .rightSide{
+            height: 100vh;
+            padding: 0px 10px;
+    
+            .logo{
+                width: 148px;
+                height: 48px;
+                margin-top: 28px;
+                margin-bottom: 24px;
 
-            .subTitle{
-                margin-bottom: 30px;
+                svg{
+                    width: 148px;
+                    height: 48px;
+                }
+    
             }
-
-            .registerForm{
-                div:nth-child(2){
-                    margin-bottom: 20px;
+            .loginInfoDiv{
+                width: 355px;
+                height: 435px;
+                padding: 20px 22px;
+    
+                .subTitle{
+                    margin-bottom: 30px;
+                }
+    
+                .registerForm{
+                    div:nth-child(2){
+                        margin-bottom: 20px;
+                    }
+                }
+    
+                .registerForm{
+                    width: 315px !important;
                 }
             }
-
-            .registerForm{
-                width: 315px !important;
-            }
+    
+            
         }
-
-        
     }
+    
 }
 
 @media screen and (max-width:320px){
-    .rightSide{
-        height: 100vh;
-        padding: 0px 8px;
-        
-
-        .registerInfoDiv{
-            width: 312px;
-            height: 435px;
-            padding: 20px 22px;
-
-            .subTitle{
-                margin-bottom: 30px;
-            }
-
-            .registerForm{
-                width: 290px !important;
-            }
-            .registerForm{
-                div:nth-child(2){
-                    margin-bottom: 20px;
+    .login{
+        .rightSide{
+            height: 100vh;
+            padding: 0px 8px;
+            
+    
+            .loginInfoDiv{
+                width: 312px;
+                height: 435px;
+                padding: 20px 22px;
+    
+                .subTitle{
+                    margin-bottom: 30px;
+                }
+    
+                .registerForm{
+                    width: 290px !important;
+                }
+                .registerForm{
+                    div:nth-child(2){
+                        margin-bottom: 20px;
+                    }
                 }
             }
-        }
-
-        .registerForm{
-            width: 315px !important;
+    
+            .registerForm{
+                width: 315px !important;
+            }
         }
     }
 }
