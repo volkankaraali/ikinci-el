@@ -1,0 +1,133 @@
+.home{
+    background-color: #f2f2f2;
+    width: 100vw;
+    min-height: 100%;
+
+    .container{
+        padding: 10px 220px;
+
+        .categories{
+
+            color: #525252;
+            margin: 30px 0px;
+            height: 40px;
+
+            white-space: nowrap;
+            overflow-x: auto;
+            
+            &::-webkit-scrollbar{
+                display: none;
+            }
+            
+            nav{
+                display: flex;
+                height: 100%;
+                border-bottom: 1px solid #E0E0E0;
+                
+                .active{
+                    
+                    color: #4b9ce2;
+                    border-bottom: 1.7px solid #4b9ce2;
+                }
+                a{
+                    font-weight:bold;
+                    cursor: pointer;
+                    margin-right: 53px;
+                }
+            }
+        }
+
+        .loading{
+            display: flex;
+            justify-content: center;
+        }
+        
+        .products{
+
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px 20px;
+            margin-bottom: 161px;
+
+           
+
+            .noProduct{
+                background-color: #FFE5E5;
+                padding: 10px 20px;
+                border-radius: 8px;
+                color:#F77474 ;
+                margin-bottom: 161px;
+            }
+            .productCard{
+                width: 280px;
+                height: 392px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding: 10px;
+    
+                background-color: white;
+                border-radius: 8px;
+    
+                .body{
+                    img{
+                        width: 260px;
+                        height: 297px;
+                        object-fit: cover;
+                        border-radius: 8px;
+                        margin-bottom: 5px;
+                    }
+    
+                    .bodyHeader{
+                        display: flex;
+                        justify-content: space-between;
+    
+                        .brand{
+                            font-size: 15px;
+                            color: #4b9ce2;
+                            font-weight: bold;
+                        }
+                        .color{
+                            font-size: 13px;
+                        }
+                    }
+                }
+    
+                .footer{
+                    font-size: 18px;
+                    font-weight: bold;
+                }
+    
+            }
+        }
+
+    
+    }
+
+    
+}
+
+
+@media screen and (max-width:375px) {
+    .home{
+        .container{
+            padding: 10px 10px;
+            .products{
+                gap: 15px 9px;
+                margin-bottom: 0px;
+                .productCard{
+                    width: 173px;
+                    height: 266px;
+
+                    .body{
+                        img{
+                            width: 161px;
+                            height: 184px;
+                        }
+                    }
+                    
+                }
+            }
+        }
+    }
+}

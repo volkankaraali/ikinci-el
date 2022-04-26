@@ -1,6 +1,6 @@
 import { Formik } from 'formik';
 import React from 'react';
-import LoadingCircleIcon from '../constant/icons/LoadingCircleIcon';
+import LoadingDotsIcon from '../constant/icons/LoadingDotsIcon';
 import { LoginAndRegisterSchema } from '../constant/yupSchemas/LoginAndRegisterSchema';
 
 function RegisterLoginForm(props) {
@@ -31,7 +31,7 @@ function RegisterLoginForm(props) {
             </div>
 
             <button className='submitBtn' type='submit' disabled={props.loading} >
-              {props.loading ? <LoadingCircleIcon className='loading' size={50} /> : props.buttonText}
+              {props.loading ? <LoadingDotsIcon className='loading' size={50} /> : props.buttonText}
             </button>
           </form>
       }

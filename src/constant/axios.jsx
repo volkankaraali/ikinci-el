@@ -6,4 +6,6 @@ export default axios.create({ baseURL });
 export const URL = {
   register: 'auth/local/register',
   login: 'auth/local',
+  categories: '/categories',
+  products: '/products?_limit=15',
 };

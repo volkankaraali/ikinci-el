@@ -1,3 +1,6 @@
+html, body, #root, .App {
+    height: 100%;
+}
 *{
     margin: 0;
     padding: 0;
@@ -10,6 +13,7 @@
 @import '_register';
 @import '_login';
 @import '_header';
+@import '_home';
 
 
 .errormes{

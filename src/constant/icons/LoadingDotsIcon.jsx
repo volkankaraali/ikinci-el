@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LoadingCircleIcon = props => (
+const LoadingDotsIcon = props => (
   <svg width={props.size || 200} height={props.size || 200} viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
     <g transform="translate(20 50)">
       <circle cx="0" cy="0" r="6" fill="#898989">
@@ -22,4 +22,4 @@ const LoadingCircleIcon = props => (
   </svg>
 );
 
-export default LoadingCircleIcon;
+export default LoadingDotsIcon;
