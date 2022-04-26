@@ -74,7 +74,6 @@ function Home() {
     localStorage.setItem('category', category);
   };
 
-  console.log(products);
   return (
     <div className='home'>
       <div className="container">

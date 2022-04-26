@@ -10,7 +10,8 @@ function Header() {
   return (
     <header>
       <div className="container">
-        <Logo />
+
+        <Link to='/'><Logo /></Link>
         <div className='menu'>
           {
             auth?.authToken ?
