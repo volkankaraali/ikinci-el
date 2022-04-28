@@ -57,20 +57,27 @@ function Home() {
 
     //for first loaded 
     let category = localStorage.getItem('category');
-    if (category == 'Hepsi') {
+    if (category) {
+      if (category == 'Hepsi') {
+        setFilteredProducts(products);
+        setLoading(false);
+      }
+      else {
+        let filter = products.filter(product => product.category.name == category);
+        setFilteredProducts(filter);
+        setLoading(false);
+      }
+    }
+    else {
+      setActiveCategory('Hepsi');
       setFilteredProducts(products);
       setLoading(false);
-    } else {
-      let filter = products.filter(product => product.category.name == category);
-      setFilteredProducts(filter);
-      setLoading(false);
     }
-
   };
+
 
   const handleActiveCategory = (category) => {
     setActiveCategory(category);
-    filterProducts(category);
     localStorage.setItem('category', category);
   };
 
@@ -78,27 +85,25 @@ function Home() {
     <div className='home'>
       <div className="container">
         <img src={homeBanner} alt="" />
-
         <div className='categories'>
           <nav>
-            <a className={`${activeCategory == 'Hepsi' && 'active'}`} onClick={() => handleActiveCategory('Hepsi')}>Hepsi</a>
+            <a className={`${activeCategory == 'Hepsi' ? 'active' : ''}`} onClick={() => handleActiveCategory('Hepsi')}>Hepsi</a>
             {
-              categories?.map(category => <a key={category.id} className={`${activeCategory == category.name && 'active'}`} onClick={() => handleActiveCategory(category.name)}>{category.name}</a>)
+              categories.map(category => <a key={category.id} className={`${activeCategory == category.name ? 'active' : ''}`} onClick={() => handleActiveCategory(category.name)}>{category.name}</a>)
             }
-            <a className={`${activeCategory == 'Diğer' && 'active'}`} onClick={() => handleActiveCategory('Diğer')}>Diğer</a>
+            <a className={`${activeCategory == 'Diğer' ? 'active' : ''}`} onClick={() => handleActiveCategory('Diğer')}>Diğer</a>
           </nav>
         </div>
-        <div className="products">
 
+        <div className="products">
           {
             loading
               ? <div className='loading'><LoadingCircleIcon size={40} /></div>
-              :
-              (
+              : (
 
                 filteredProducts.length > 0
-                  ? filteredProducts.map(product => (<Link to={`detail/${product.name.toLowerCase().replace(/ /g, '-')}`} key={product.id}> <ProductCard brand={product.brand} color={product.color} price={product.price} url={product?.image?.url} /></Link>))
-                  : <div div className='noProduct' > Ürün bulunmuyor.</div>
+                  ? filteredProducts.map(product => (<Link to={`detail/${product.name.toLowerCase().replace(/ /g, '-')}`} key={product.id}> <ProductCard brand={product.brand} color={product.color} price={product.price} url={product.image?.url} /></Link>))
+                  : <div className='noProduct' > Ürün bulunmuyor.</div>
               )
           }
         </div>

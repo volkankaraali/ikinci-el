@@ -1,7 +1,6 @@
 header{
     height: 80px;
-    width: 100vw;
-
+    
     .container{
         height: 100%;
         margin: 0 220px ;
@@ -29,6 +28,15 @@ header{
 
             .addProduct{
                 margin-right: 10px;
+                
+                svg{
+                    margin-right: 6px;
+                }
+            }
+            .myProfile{
+                svg{
+                    margin-right: 6px;
+                }
             }
         }
     }

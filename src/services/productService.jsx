@@ -1,9 +1,9 @@
-import axios, { URL } from '../constant/axios';
+import { noTokenAxios, URL } from '../constant/axios';
 
 
 export const getProducts = async () => {
   try {
-    const res = await axios.get(URL.products);
+    const res = await noTokenAxios(URL.products);
     return res;
   } catch (error) {
     console.log(error);

@@ -7,6 +7,7 @@ import { useAuth } from '../context/AuthProviderContext';
 
 function Header() {
   const { auth } = useAuth();
+  const urlParam = auth?.email?.split('@')[0];
   return (
     <header>
       <div className="container">
@@ -17,7 +18,7 @@ function Header() {
             auth?.authToken ?
               <>
                 <Link to='' className='addProduct'><PlusIcon /> <span className='addProductText' > Ürün Ekle</span> </Link>
-                <Link to='' className='myProfile' ><HumanIcon /> Hesabım</Link>
+                <Link to={`profile/${urlParam}`} className='myProfile' ><HumanIcon /> Hesabım</Link>
 
               </>
               : <Link to='login'><HumanIcon /> Giriş Yap</Link>

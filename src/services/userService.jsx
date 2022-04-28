@@ -1,9 +1,10 @@
-import axios, { URL } from '../constant/axios';
+import { noTokenAxios, withTokenAxios, URL } from '../constant/axios';
+//import useGetTokenFromCookie from '../hooks/useGetTokenFromCookie';
 
 //username must be same with password
 export const getRegister = async (username, email, password) => {
   try {
-    const res = await axios.post(URL.register, { username, email, password });
+    const res = await noTokenAxios.post(URL.register, { username, email, password });
     return res;
   } catch (error) {
     if (error.response?.status === 400) {
@@ -19,7 +20,7 @@ export const getRegister = async (username, email, password) => {
 
 export const getLogin = async (email, password) => {
   try {
-    const res = await axios.post(URL.login, { identifier: email, password });
+    const res = await noTokenAxios.post(URL.login, { identifier: email, password });
     return res;
   } catch (error) {
     if (error.response?.status === 400) {
@@ -29,5 +30,16 @@ export const getLogin = async (email, password) => {
       };
 
     }
+  }
+};
+
+export const getUserMe = async () => {
+  // let token = useGetTokenFromCookie();
+  // const config = { headers: { Authorization: `Bearer ${token}` } };
+  try {
+    const res = await withTokenAxios.get(URL.usersMe);
+    return res;
+  } catch (error) {
+    console.log(error.response);
   }
 };

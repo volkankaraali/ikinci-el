@@ -22,12 +22,12 @@ function LoginForm(props) {
           <form onSubmit={handleSubmit} className="registerForm">
             <div>
               <label>Email</label>
-              <input className={errors.email && touched.email && 'formError'} name='email' value={values.email} onBlur={handleBlur} onChange={handleChange} placeholder="Email@example.com" type="text" />
+              <input className={(errors.email && touched.email) ? 'formError' : ''} name='email' value={values.email} onBlur={handleBlur} onChange={handleChange} placeholder="Email@example.com" type="text" />
             </div>
 
             <div>
               <label>Password</label>
-              <input className={errors.password && touched.password && 'formError'} name='password' value={values.password} onBlur={handleBlur} onChange={handleChange} type="password" />
+              <input className={(errors.password && touched.password) ? 'formError' : ''} name='password' value={values.password} onBlur={handleBlur} onChange={handleChange} type="password" />
             </div>
 
             <button className='submitBtn' type='submit' disabled={props.loading} >

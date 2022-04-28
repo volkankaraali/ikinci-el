@@ -11,6 +11,7 @@ export const AuthProvider = ({ children }) => {
     let email = localStorage.getItem('email');
     let id = localStorage.getItem('id');
     let token = useGetTokenFromCookie();
+    //console.log('token :' + token);
     token && setAuth({ id, email, authToken: token });
 
   }, []);
