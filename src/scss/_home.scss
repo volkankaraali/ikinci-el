@@ -13,17 +13,15 @@
             height: 40px;
 
             white-space: nowrap;
-            overflow-x: auto;
-            
-            &::-webkit-scrollbar{
-                display: none;
-            }
-            
+           
             nav{
                 display: flex;
                 height: 100%;
                 border-bottom: 1px solid #E0E0E0;
-                
+                overflow-x: auto;
+                &::-webkit-scrollbar{
+                    display: none;
+                }
                 .active{
                     
                     color: #4b9ce2;

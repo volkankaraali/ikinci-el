@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import CategoriesNav from '../components/CategoriesNav';
 
 import ProductCard from '../components/ProductCard';
 import LoadingCircleIcon from '../constant/icons/LoadingCircleIcons';
@@ -86,13 +87,7 @@ function Home() {
       <div className="container">
         <img src={homeBanner} alt="" />
         <div className='categories'>
-          <nav>
-            <a className={`${activeCategory == 'Hepsi' ? 'active' : ''}`} onClick={() => handleActiveCategory('Hepsi')}>Hepsi</a>
-            {
-              categories.map(category => <a key={category.id} className={`${activeCategory == category.name ? 'active' : ''}`} onClick={() => handleActiveCategory(category.name)}>{category.name}</a>)
-            }
-            <a className={`${activeCategory == 'Diğer' ? 'active' : ''}`} onClick={() => handleActiveCategory('Diğer')}>Diğer</a>
-          </nav>
+          <CategoriesNav categories={categories} activeCategory={activeCategory} handleActiveCategory={handleActiveCategory} />
         </div>
 
         <div className="products">
