@@ -123,6 +123,11 @@
                             width: 161px;
                             height: 184px;
                         }
+
+                        .bodyHeader{
+                            flex-direction: column;
+                            align-items: flex-start;
+                        }
                     }
                     
                 }
