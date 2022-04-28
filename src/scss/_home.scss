@@ -5,7 +5,9 @@
 
     .container{
         padding: 10px 220px;
-
+        img{
+            border-radius: 8px;
+        }
         .categories{
 
             color: #525252;
@@ -13,7 +15,8 @@
             height: 40px;
 
             white-space: nowrap;
-           
+            
+            
             nav{
                 display: flex;
                 height: 100%;
@@ -111,6 +114,16 @@
     .home{
         .container{
             padding: 10px 10px;
+
+            .categories{
+                nav {
+                    a{
+                        margin-right: 25px;
+                        font-size: 18px;
+                    }
+                }
+            }
+
             .products{
                 gap: 15px 9px;
                 margin-bottom: 0px;

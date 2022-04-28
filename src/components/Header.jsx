@@ -17,7 +17,7 @@ function Header() {
           {
             auth?.authToken ?
               <>
-                <Link to='' className='addProduct'><PlusIcon /> <span className='addProductText' > Ürün Ekle</span> </Link>
+                <Link to='add' className='addProduct'><PlusIcon /> <span className='addProductText' > Ürün Ekle</span> </Link>
                 <Link to={`profile/${urlParam}`} className='myProfile' ><HumanIcon /> Hesabım</Link>
 
               </>
