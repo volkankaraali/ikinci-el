@@ -1,7 +1,7 @@
-import { noTokenAxios, withTokenAxios, URL } from '../constant/axios';
+import { noTokenAxios, withTokenAxios, URL } from '../constants/axios';
 //import useGetTokenFromCookie from '../hooks/useGetTokenFromCookie';
 
-//username must be same with password
+
 export const getRegister = async (username, email, password) => {
   try {
     const res = await noTokenAxios.post(URL.register, { username, email, password });

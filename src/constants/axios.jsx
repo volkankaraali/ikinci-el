@@ -1,7 +1,8 @@
 import axios from 'axios';
 import useGetTokenFromCookie from '../hooks/useGetTokenFromCookie';
+import baseURL from './constants';
 
-const baseURL = 'https://bootcamp.akbolat.net/';
+
 const withTokenAxios = axios.create({ baseURL });
 const noTokenAxios = axios.create({ baseURL });
 
@@ -21,8 +22,9 @@ export const URL = {
   register: 'auth/local/register',
   login: 'auth/local',
   categories: '/categories',
-  products: '/products?_limit=15',
+  products: '/products',
   usersMe: '/users/me',
+  offers: '/offers',
 };
 
-export { withTokenAxios, noTokenAxios, baseURL };
+export { withTokenAxios, noTokenAxios };

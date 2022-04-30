@@ -1,0 +1,258 @@
+.productDetail{
+    background-color: #f2f2f2;
+    padding: 20px 220px;
+    
+    .productCard{
+        max-width: 1480px;
+        height: 769px;
+        border-radius: 8px;
+        background-color: white;
+        color: #555555;
+        padding: 16px 15px;
+        display: flex;
+    
+        img{
+            min-width: 700px;
+            height: 737px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .productBody{
+            padding: 30px 60px;
+            width: 100%;
+            .title{
+                font-size: 34px;
+                margin-bottom: 25px;
+            }
+
+            //second detail div
+            :nth-child(3){
+                margin: 20px 0;
+            }
+
+            .details{
+                display: flex;
+                flex-direction: row;
+                font-size: 15px;
+
+                .brand{
+                    margin-right: 98px;
+                    font-weight: bold;
+                }
+                .color{
+                    margin-right: 105px;
+                    font-weight: bold;
+                }
+                .status{
+                    margin-right: 18px;
+                    font-weight: bold;
+                }
+            }
+
+            .price{
+                font-size: 25px;
+                font-weight: bold;
+                margin:30px 0;
+
+                .offer{
+                    width: 230px;
+                    height: 36px;
+                    background-color:#f2f2f2;
+                    color: #b1b1b1;
+                    padding: 8px 10px;
+                    font-size: 15px;   
+                    border-radius: 8px;
+                    display: flex;
+                    align-items: center;
+
+                    span{
+                        margin-left: 4px;
+                        font-weight: bold;
+                        color: #555555;
+                    }
+                }
+            }
+
+            .buttons{
+                margin-bottom: 30px;
+                display: flex;
+                button{
+                    width: 235px;
+                    height: 45px;
+                    border-radius: 8px;
+                    font-weight: bold;
+                }
+                .buy{
+                    background-color: #4b9ce2;
+                    color: white;
+                    margin-right: 10px;
+                }
+                .offer{
+                    background-color: #f0f8ff;
+                    color:#4b9ce2 ;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    
+                }
+            }
+            .description{
+                max-width: 480px;
+
+                div{
+                    font-family: 18px;
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                }
+
+                p{
+                    font-size: 15px;
+                    line-height: 23px;
+                }
+            }
+            
+
+        }
+    }
+
+}
+
+.modal{
+    padding: 20px;
+
+    .modalHeader{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 17px;
+        
+        
+        h1{
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .closeIcon{
+            cursor: pointer;
+        }
+    }
+
+    .modalProduct{
+        padding: 6px;
+        background-color: #f0f8ff;
+        border-radius: 10px;
+        margin-bottom: 20px;
+
+        .detail{
+            display: flex;
+
+            img{
+                width: 50px;
+                height: 50px;
+                object-fit: cover;
+                border-radius: 8px;
+                margin-right: 7px;
+            }
+
+            .info{
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+
+                .price{
+                    align-self: center;
+                    font-weight: bold;
+
+                }
+               
+            }
+        }
+        
+    }
+
+    .modalOffers{
+        
+        display: flex;
+        flex-direction: column;
+        
+        label{
+            display: flex;
+            align-items: center;
+            padding: 10px 13px ;
+            border: 1px solid #b1b1b1;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .textOfferLabel{
+            border: none;
+            background-color: #F4F4F4;
+            color: #99A0A7;
+            display: flex;
+            justify-content: space-between;
+
+            input{
+                background-color: transparent;
+                width: 100%;
+                outline: none;
+            }
+        }
+
+        .activeOffer{
+            background-color: #f0f8ff !important;
+            color: #4b9ce2 !important;
+            border: 1px solid #4b9ce2 !important;
+        }
+
+        .inputText{
+            background-color: #F4F4F4;
+            border: none;
+            outline: none;
+            width: 100%;
+        }
+        
+
+        input[type="radio"]{
+            margin-right: 5px;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #b1b1b1;
+            border-radius: 50%;
+
+        }
+
+        input[type="radio"]:checked{
+            background-color: #4b9ce2;
+            div{
+                background-color: #4b9ce2;
+            }
+        }
+
+        input[type="radio"]:checked::before{
+            content: '\2713';
+            font-size: 13px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .buttonContainer{
+            display: flex;
+            justify-content: center;
+        }
+
+        button{
+            width: 315px;
+            height: 45px;
+            background-color: #4b9ce2;
+            color: white;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+}

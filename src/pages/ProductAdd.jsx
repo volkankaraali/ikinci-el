@@ -2,7 +2,9 @@ import React from 'react';
 
 function ProductAdd() {
   return (
-    <div>ProductAdd</div>
+    <div className='productAdd'>
+      add
+    </div>
   );
 }
 

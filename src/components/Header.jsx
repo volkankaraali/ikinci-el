@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import HumanIcon from '../constant/icons/HumanIcon';
-import Logo from '../constant/icons/Logo';
-import PlusIcon from '../constant/icons/PlusIcon';
+import HumanIcon from '../constants/icons/HumanIcon';
+import Logo from '../constants/icons/Logo';
+import PlusIcon from '../constants/icons/PlusIcon';
 import { useAuth } from '../context/AuthProviderContext';
 
 function Header() {

@@ -1,7 +1,7 @@
 import { Formik } from 'formik';
 import React from 'react';
-import LoadingDotsIcon from '../constant/icons/LoadingDotsIcon';
-import { LoginAndRegisterSchema } from '../constant/yupSchemas/LoginAndRegisterSchema';
+import LoadingDotsIcon from '../constants/icons/LoadingDotsIcon';
+import { LoginAndRegisterSchema } from '../constants/yupSchemas/LoginAndRegisterSchema';
 
 function RegisterLoginForm(props) {
   return (

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import registerLoginImage from '../images/registerLoginImage.png';
-import Logo from '../constant/icons/Logo';
+import Logo from '../constants/icons/Logo';
 import LoginForm from '../components/LoginForm';
 import { useAuth } from '../context/AuthProviderContext';
 import useDisplaySuccessMess from '../hooks/useDisplaySuccessMes';

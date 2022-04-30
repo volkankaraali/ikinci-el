@@ -1,4 +1,4 @@
-import { noTokenAxios, URL } from '../constant/axios';
+import { noTokenAxios, URL } from '../constants/axios';
 
 
 export const getCategories = async () => {

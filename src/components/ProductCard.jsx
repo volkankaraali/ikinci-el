@@ -1,11 +1,12 @@
 import React from 'react';
+import baseURL from '../constants/constants';
 
 function ProductCard(props) {
-  const basiApi = 'https://bootcamp.akbolat.net/';
+
   return (
     <div className='productCard'>
       <div className='body'>
-        <img src={basiApi + props.url} alt="" />
+        <img src={baseURL + props.url} alt="" />
         <div className='bodyHeader'>
           <span className='brand'>{props.brand}</span>
           <span className='color'> <b>Renk:</b> {props.color}</span>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import registerLoginImage from '../images/registerLoginImage.png';
 import RegisterForm from '../components/RegisterForm';
-import Logo from '../constant/icons/Logo';
+import Logo from '../constants/icons/Logo';
 import { useAuth } from '../context/AuthProviderContext';
 import { useNavigate } from 'react-router-dom';
 import { getRegister } from '../services/userService';
@@ -27,7 +27,8 @@ function Register() {
 
   const getRegisterFunc = async (auth) => {
     setLoading(true);
-    const res = await getRegister(auth.password, auth.email, auth.password);
+    //api has username,email and password. but we dont get username from user. so use username as email.
+    const res = await getRegister(auth.email, auth.email, auth.password);
     console.log(res);
     if (res.status === 400) {
       console.log(res.message);

@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStandaloneToast } from '@chakra-ui/react';
-import ExclamationMarkIcon from '../constant/icons/ExclamationMarkIcon';
+import ExclamationMarkIcon from '../constants/icons/ExclamationMarkIcon';
 
 const toast = createStandaloneToast();
 
