@@ -1,12 +1,7 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable indent */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import LoadingCircleIcon from '../constants/icons/LoadingCircleIcons';
 
 function ModalForm({ getOfferLoading, activeOfferInModal, setOffer, setActiveOfferInModal, getOfferFunc }) {
-
-
-
 
   useEffect(() => {
     const offers = document.querySelector('.offers');
@@ -40,8 +35,6 @@ function ModalForm({ getOfferLoading, activeOfferInModal, setOffer, setActiveOff
   const handleActiveOffer = (offerName) => {
     setActiveOfferInModal(offerName);
   };
-
-
 
   return (
     <div className='offers'>
