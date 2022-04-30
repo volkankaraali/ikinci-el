@@ -1,14 +1,11 @@
-/* eslint-disable no-unused-vars */
-import { Modal, ModalContent, ModalOverlay, useDisclosure } from '@chakra-ui/react';
-
 import React, { useEffect, useState } from 'react';
+
+import { useDisclosure } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 import baseURL from '../constants/constants';
-import CloseIcon from '../constants/icons/CloseIcon';
 import { getProductById } from '../services/productService';
 import LoadingCircleIcons from '../constants/icons/LoadingCircleIcons';
 import { useAuth } from '../context/AuthProviderContext';
-import ModalForm from '../components/ModalForm';
 import { deleteOffer, getOffer } from '../services/offerService';
 import OfferModal from '../components/OfferModal';
 
@@ -36,8 +33,6 @@ function ProductDetail() {
     getProduct();
   }, [isOffer]);
 
-
-
   const getProduct = async () => {
     setLoading(true);
     const res = await getProductById(id);
@@ -59,7 +54,7 @@ function ProductDetail() {
       newOffer = (product.price * offer.value) / 100;
     }
 
-    const req = await getOffer(product.id, auth.id, newOffer);
+    await getOffer(product.id, auth.id, newOffer);
     setIsOffer(true);
     setOffer({});
     setActiveOfferInModal('');
@@ -74,7 +69,7 @@ function ProductDetail() {
 
   const removeOffer = async (offerId) => {
     setRemoveOfferLoading(true);
-    const res = await deleteOffer(offerId);
+    await deleteOffer(offerId);
     setRemoveOfferLoading(false);
     setIsOffer(false);
   };

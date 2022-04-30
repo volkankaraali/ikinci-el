@@ -1,5 +1,3 @@
-
-
 const useGetTokenFromCookie = () => {
   let cookie = document.cookie;
   let arr = cookie.split('=');

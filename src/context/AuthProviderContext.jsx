@@ -3,7 +3,6 @@ import useGetTokenFromCookie from '../hooks/useGetTokenFromCookie';
 
 const AuthContext = createContext();
 
-// eslint-disable-next-line react/prop-types
 export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState({});
 
