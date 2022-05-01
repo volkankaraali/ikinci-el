@@ -18,9 +18,7 @@ function Login() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    //if there is authtoken in cookie that will be navigate to home.
-    // let token = useGetTokenFromCookie();
-    // token && navigator('/');
+    //if there is authtoken in authContext that will be navigate to home.
     auth?.authToken && navigator('/');
   }, []);
 

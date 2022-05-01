@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import useGetTokenFromCookie from '../hooks/useGetTokenFromCookie';
 import { getUserMe } from '../services/userService';

@@ -18,8 +18,7 @@ function Register() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    //if there is authtoken in cookie that will be navigate to home.
-    // let token = useGetTokenFromCookie();
+    //if there is authtoken in authContext that will be navigate to home.
     // token && navigator('/');
     auth?.authToken && navigator('/');
   }, []);

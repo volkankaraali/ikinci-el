@@ -1,19 +1,15 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import CategoriesNav from '../components/CategoriesNav';
 
 import ProductCard from '../components/ProductCard';
 import LoadingCircleIcon from '../constants/icons/LoadingCircleIcons';
-import { useAuth } from '../context/AuthProviderContext';
 import { useProducts } from '../context/ProductContext';
 import homeBanner from '../images/homeBanner.png';
 import { getCategories } from '../services/categoryService';
-import { getProducts } from '../services/productService';
 
 function Home() {
 
-  const { auth } = useAuth();
   const { products } = useProducts();
 
   const [categories, setCategories] = useState([]);
@@ -26,7 +22,6 @@ function Home() {
 
 
     let category = localStorage.getItem('category') || 'Hepsi';
-    //console.log(category);
     filterProducts(category);
     setActiveCategory(category);
 

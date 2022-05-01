@@ -1,7 +1,4 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
 import axios from 'axios';
-import { useAuth } from '../context/AuthProviderContext';
 import useGetTokenFromCookie from '../hooks/useGetTokenFromCookie';
 import baseURL from './constants';
 
@@ -9,9 +6,7 @@ import baseURL from './constants';
 const withTokenAxios = axios.create({ baseURL });
 const noTokenAxios = axios.create({ baseURL });
 
-
 const token = useGetTokenFromCookie();
-//console.log(tokenAxios);
 
 withTokenAxios.interceptors.request.use(
   config => {
