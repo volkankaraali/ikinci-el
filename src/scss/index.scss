@@ -44,9 +44,23 @@ html, body, #root, .App {
     border-radius: 10px !important;
     padding: 12px 19px !important;
     box-shadow: 0px 3px 12px #1E36482E !important;
-    background-color: green !important;
-    color: white;
+    background-color: #F1FFF0 !important;
+    color: #46AF32;
     svg{
         margin-right: 10px;
+    }
+}
+
+.chakra-toast__inner{
+    position: relative;
+    top: 90px;
+    right: 11px;
+}
+@media screen and (max-width:375px) {
+    //all toast message (error and success)
+    .chakra-toast__inner{
+        position: relative;
+        top: 80px;
+        right: 4px;
     }
 }

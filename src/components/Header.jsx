@@ -15,7 +15,7 @@ function Header() {
         <Link to='/'><Logo /></Link>
         <div className='menu'>
           {
-            auth?.authToken ?
+            auth?.id ?
               <>
                 <Link to='add' className='addProduct'><PlusIcon /> <span className='addProductText' > Ürün Ekle</span> </Link>
                 <Link to={`profile/${urlParam}`} className='myProfile' ><HumanIcon /> Hesabım</Link>

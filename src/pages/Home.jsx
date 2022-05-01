@@ -1,61 +1,50 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import CategoriesNav from '../components/CategoriesNav';
 
 import ProductCard from '../components/ProductCard';
 import LoadingCircleIcon from '../constants/icons/LoadingCircleIcons';
+import { useAuth } from '../context/AuthProviderContext';
+import { useProducts } from '../context/ProductContext';
 import homeBanner from '../images/homeBanner.png';
 import { getCategories } from '../services/categoryService';
 import { getProducts } from '../services/productService';
 
 function Home() {
 
+  const { auth } = useAuth();
+  const { products } = useProducts();
+
   const [categories, setCategories] = useState([]);
-  const [products, setProducts] = useState([]);
   const [activeCategory, setActiveCategory] = useState('');
 
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
-
-  //filteredProduct default value is Hepsi. after getProduct, filteredproduct sets response data.
   useEffect(() => {
 
+
     let category = localStorage.getItem('category') || 'Hepsi';
+    //console.log(category);
+    filterProducts(category);
     setActiveCategory(category);
-    getProductsFunc(category);
-    getCategoriesFunc();
 
-  }, []);
+  }, [products]);
 
+  //for every category changes
   useEffect(() => {
     let category = localStorage.getItem('category');
     filterProducts(category);
   }, [activeCategory]);
 
+  useEffect(() => {
+    getCategoriesFunc();
+  }, []);
 
-  const filterProducts = (activeCategory) => {
-    if (activeCategory == 'Hepsi') {
-      setFilteredProducts(products);
-    }
-    else {
-      let filter = products.filter(product => product.category.name == activeCategory);
-      setFilteredProducts(filter);
-    }
-  };
 
-  const getCategoriesFunc = async () => {
-    let res = await getCategories();
-    setCategories(res.data);
-  };
-
-  const getProductsFunc = async (category) => {
+  const filterProducts = async (category) => {
     setLoading(true);
-    let res = await getProducts();
-    let products = res.data;
-    setProducts(products);
-
-
     if (category == 'Hepsi') {
       setFilteredProducts(products);
       setLoading(false);
@@ -67,6 +56,10 @@ function Home() {
     }
   };
 
+  const getCategoriesFunc = async () => {
+    let res = await getCategories();
+    setCategories(res.data);
+  };
 
   const handleActiveCategory = (category) => {
     setActiveCategory(category);

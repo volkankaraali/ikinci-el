@@ -1,9 +1,8 @@
 header{
     height: 80px;
-    
-    .container{
+    padding: 0 220px;
+    .container{ 
         height: 100%;
-        margin: 0 220px ;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -46,9 +45,8 @@ header{
 
 @media screen and (max-width:375px) {
     header{
+        padding: 0 10px;
         .container{
-            margin:0 10px;
-
             .menu{
 
 

@@ -1,7 +1,7 @@
 .productDetail{
     background-color: #f2f2f2;
     padding: 20px 220px;
-    
+    height: 100%;
     .productCard{
         max-width: 1480px;
         height: 769px;
@@ -56,6 +56,7 @@
                 margin:30px 0;
 
                 .offer{
+                    font-weight:400;
                     width: 230px;
                     height: 36px;
                     background-color:#f2f2f2;
@@ -72,6 +73,24 @@
                         color: #555555;
                     }
                 }
+            }
+
+            .soldContainer{
+                width: 285px;
+                height: 45px;
+                margin-bottom: 40px;
+                display: flex;
+            }
+            .sold{
+                width: 100%;
+                background-color: #FFF0E2;
+                color: #FAAD60;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 8px;
+                font-weight: bold;
+                font-size: 18px;
             }
 
             .buttons{
@@ -118,7 +137,7 @@
 
 }
 
-.modal{
+.offerModal{
     padding: 20px;
 
     .modalHeader{
@@ -255,4 +274,132 @@
         }
     }
 
+}
+
+.buyModal{
+    padding: 20px;
+    .modalBody{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        h1{
+            font-size: 25px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        h5{
+            margin-bottom: 20px;
+        }
+        .buttons{
+            display: flex;
+            flex-direction: row;
+
+            button{
+                width: 150px;
+                height: 45px;
+                border-radius: 8px;
+                font-weight: bold;
+            }
+            .remove{
+                background-color: #f0f8ff;
+                color:#4b9ce2 ;
+                margin-right: 10px;
+            }
+            .buy{
+                background-color: #4b9ce2;
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+}
+
+
+
+@media screen and (max-width:375px) {
+    
+    .productDetail{
+        padding: 10px;
+        height: 100%;
+        .productCard{
+            width: 355px;
+            height: 676px;
+            display: flex;
+            flex-direction: column;
+            padding: 6px;
+            img{
+                min-width: 343px;
+                height: 362px;
+            }
+
+            .productBody{
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+
+                .title{
+                    order: 1;
+                    font-size: 18px;
+                    margin-bottom: 10px;
+                }
+
+                :nth-child(3){
+                    margin:10px 0 ;
+                }
+
+                .details{
+                    order: 3;
+                }
+
+                .price{
+                    font-size: 20px;
+                    margin-top: 0px;
+                    margin-bottom: 10px;
+                    order: 2;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    .offer{
+                        width: 171px;
+                        height: 30px;
+                        padding: 7px 13px;
+                        font-size: 12px;
+                        span{
+                            font-size: 15px;
+                        }
+                    }
+                }
+
+                .description{
+                    margin-top: 10px;
+                    order: 4;
+                }
+
+                .buttons{
+                    position: fixed;
+                    width: 375px;
+                    left: 0;
+                    bottom: 0;
+                    background-color: white;
+                    padding: 10px;
+                    margin-bottom: 0px;
+                }
+
+                .soldContainer{
+                    margin-bottom: 0px;
+                    position: fixed;
+                    width: 100%;
+                    left: 0;
+                    padding: 10px;
+                    bottom: 0;
+                    height: 65px;
+                    background-color: white;
+                }
+            }
+        }
+    }
 }

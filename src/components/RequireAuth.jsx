@@ -8,7 +8,7 @@ function RequireAuth() {
   const location = useLocation();
 
   return (
-    auth.authToken ? <Outlet /> : <Navigate to='login' state={{ from: location }} replace  ></Navigate>
+    auth?.id ? <Outlet /> : <Navigate to='login' state={{ from: location }} replace  ></Navigate>
   );
 }
 

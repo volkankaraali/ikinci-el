@@ -1,6 +1,4 @@
 import { noTokenAxios, withTokenAxios, URL } from '../constants/axios';
-//import useGetTokenFromCookie from '../hooks/useGetTokenFromCookie';
-
 
 export const getRegister = async (username, email, password) => {
   try {

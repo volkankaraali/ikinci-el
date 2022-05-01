@@ -1,13 +1,17 @@
+
 import React, { useEffect, useState } from 'react';
 
 import { useDisclosure } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 import baseURL from '../constants/constants';
-import { getProductById } from '../services/productService';
 import LoadingCircleIcons from '../constants/icons/LoadingCircleIcons';
 import { useAuth } from '../context/AuthProviderContext';
 import { deleteOffer, getOffer } from '../services/offerService';
 import OfferModal from '../components/OfferModal';
+import useDisplayErrorMess from '../hooks/useDisplayErrorMess';
+import { getProductById, putProductSold } from '../services/productService';
+import BuyModal from '../components/BuyModal';
+import useDisplaySuccessMess from '../hooks/useDisplaySuccessMes';
 
 
 
@@ -19,25 +23,30 @@ function ProductDetail() {
   const [userOffer, setUserOffer] = useState({});
 
   const [isOffer, setIsOffer] = useState(false);
+  const [isSold, setIsSold] = useState(false);
   const [activeOfferInModal, setActiveOfferInModal] = useState('');
   const [offer, setOffer] = useState({});
 
   const [loading, setLoading] = useState(false);
   const [getOfferLoading, setGetOfferLoading] = useState(false);
   const [removeOfferLoading, setRemoveOfferLoading] = useState(false);
+  const [buyLoading, setBuyLoading] = useState(false);
 
   //for chakra modal
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen: isOfferOpen, onOpen: onOfferOpen, onClose: onOfferClose } = useDisclosure();
+  const { isOpen: isBuyOpen, onOpen: onBuyOpen, onClose: onBuyClose } = useDisclosure();
 
   useEffect(() => {
     getProduct();
-  }, [isOffer]);
+  }, [isOffer, isSold]);
+
 
   const getProduct = async () => {
     setLoading(true);
     const res = await getProductById(id);
     const data = res.data;
     setProduct(data);
+    //if auth context has id, that mean user is loggin. offers will be shown.
     let offers = data.offers;
     let isUserOffer = offers.filter(offer => offer.users_permissions_user == auth.id);
     setUserOffer(isUserOffer);
@@ -64,7 +73,7 @@ function ProductDetail() {
       radioChecked.checked = false;
     }
     setGetOfferLoading(false);
-    onClose();
+    onOfferClose();
   };
 
   const removeOffer = async (offerId) => {
@@ -74,6 +83,38 @@ function ProductDetail() {
     setIsOffer(false);
   };
 
+  const getBuyFunc = async (id) => {
+    console.log(id);
+    setBuyLoading(true);
+    const res = await putProductSold(id);
+    console.log(res.status);
+    if (res.status == 200) {
+      setBuyLoading(false);
+      useDisplaySuccessMess('Satın Alındı');
+    }
+    else {
+      setBuyLoading(true);
+      console.log(res);
+    }
+    onBuyClose();
+    setIsSold(true);
+  };
+
+  console.log(product);
+  const openModalsIfLoggin = (state) => {
+    //if there is not token in auth. do not offer or buy.
+    if (!auth.authToken) {
+      useDisplayErrorMess('Lütfen giriş yapınız.');
+    }
+    else {
+      if (state == 'Satın Al') {
+        return onBuyOpen();
+      }
+      if (state == 'Teklif Ver') {
+        return onOfferOpen();
+      }
+    }
+  };
 
   return (
     <div className='productDetail'>
@@ -81,7 +122,6 @@ function ProductDetail() {
       <div className="productCard">
         {
           loading ? <LoadingCircleIcons size={30} /> :
-
             <>
               <img src={`${baseURL}${product?.image?.url}`} alt={product.name} />
               <div className='productBody'>
@@ -106,25 +146,33 @@ function ProductDetail() {
                 <div className='price'>
                   {product.price} TL
                   {
+                    !product.isSold &&
                     userOffer.length > 0 &&
                     <div className='offer'>Verilen Teklif: <span>{userOffer[0]?.offerPrice.toLocaleString()} TL</span>  </div>
                   }
                 </div>
 
+                {
+                  product?.isSold
+                    ? <div className='soldContainer'><div className='sold'>Bu Ürün Satışta Değil</div></div>
+                    :
+                    <div className='buttons'>
 
-                <div className='buttons'>
-                  <button className='buy'>Satın Al</button>
-                  {
-                    userOffer.length > 0
-                      ?
-                      <button className='offer' disabled={removeOfferLoading && true} onClick={() => removeOffer(userOffer[0]?.id)}>
-                        {removeOfferLoading ? <LoadingCircleIcons size={20} /> : 'Teklifi Geri Çek'}
-                      </button>
-                      : product.isOfferable && <button className='offer' onClick={() => onOpen()}>Teklif Ver</button>
+                      <button className='buy' onClick={() => openModalsIfLoggin('Satın Al')} >Satın Al</button>
+                      {
+                        userOffer.length > 0
+                          ?
+                          <button className='offer' disabled={removeOfferLoading && true} onClick={() => removeOffer(userOffer[0]?.id)}>
+                            {removeOfferLoading ? <LoadingCircleIcons size={20} /> : 'Teklifi Geri Çek'}
+                          </button>
+                          : product.isOfferable && <button className='offer' onClick={() => openModalsIfLoggin('Teklif Ver')}>Teklif Ver</button>
 
-                  }
+                      }
 
-                </div>
+                    </div>
+                }
+
+
 
                 <div className='description'>
                   <div>Açıklama</div>
@@ -136,14 +184,21 @@ function ProductDetail() {
         }
       </div >
       <OfferModal
-        isOpen={isOpen}
-        onClose={onClose}
+        isOfferOpen={isOfferOpen}
+        onOfferClose={onOfferClose}
         getOfferLoading={getOfferLoading}
         activeOfferInModal={activeOfferInModal}
         setActiveOfferInModal={setActiveOfferInModal}
         setOffer={setOffer}
         getOfferFunc={getOfferFunc}
         product={product}
+      />
+      <BuyModal
+        isBuyOpen={isBuyOpen}
+        onBuyClose={onBuyClose}
+        productId={product?.id}
+        getBuyFunc={getBuyFunc}
+        buyLoading={buyLoading}
       />
 
     </div >

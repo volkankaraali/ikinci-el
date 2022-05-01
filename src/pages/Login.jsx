@@ -7,22 +7,21 @@ import { useAuth } from '../context/AuthProviderContext';
 import useDisplaySuccessMess from '../hooks/useDisplaySuccessMes';
 import useDisplayErrorMess from '../hooks/useDisplayErrorMess';
 import { getLogin } from '../services/userService';
-import { useNavigate } from 'react-router-dom';
-import useGetTokenFromCookie from '../hooks/useGetTokenFromCookie';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
 function Login() {
 
   const navigator = useNavigate();
-  const { setAuth } = useAuth();
+  const { auth, setAuth } = useAuth();
   const [loading, setLoading] = useState(false);
-
 
   useEffect(() => {
     //if there is authtoken in cookie that will be navigate to home.
-    let token = useGetTokenFromCookie();
-    token && navigator('/');
+    // let token = useGetTokenFromCookie();
+    // token && navigator('/');
+    auth?.authToken && navigator('/');
   }, []);
 
   const getLoginFunc = async (auth) => {
@@ -34,9 +33,7 @@ function Login() {
       setLoading(false);
     }
     else {
-      setAuth({ id: res.data?.user?.id, email: auth.email, authToken: res.data?.jwt });
-      localStorage.setItem('email', auth.email);
-      localStorage.setItem('id', res.data?.user?.id);
+      setAuth({ id: res.data?.user?.id, email: auth.email, authToken: res?.data?.jwt });
       document.cookie = `Auth_Token=${res.data?.jwt}`;
       useDisplaySuccessMess('Login success.');
       setLoading(false);
@@ -55,7 +52,7 @@ function Login() {
         <img src={registerLoginImage} alt="ikinci el" />
       </div>
       <div className='rightSide'>
-        <div className='logo'><Logo /></div>
+        <div className='logo'><Logo width={224} height={73} /></div>
 
 
         <div className='loginInfoDiv'>
@@ -63,7 +60,7 @@ function Login() {
           <div className='subTitle'>Fırsatlardan yararlanmak için giriş yap!</div>
           <LoginForm getLoginFunc={getLoginFunc} loading={loading} buttonText={'Giriş Yap'} />
           <div className='footer'>
-            Hesabın yok mu? <span>Üye Ol</span>
+            Hesabın yok mu? <span><Link to='/register'>Üye Ol</Link></span>
           </div>
         </div>
       </div>

@@ -4,17 +4,17 @@ import baseURL from '../constants/constants';
 import CloseIcon from '../constants/icons/CloseIcon';
 import ModalForm from './ModalForm';
 
-function OfferModal({ isOpen, onClose, getOfferLoading, product, activeOfferInModal, setActiveOfferInModal, setOffer, getOfferFunc }) {
+function OfferModal({ isOfferOpen, onOfferClose, getOfferLoading, product, activeOfferInModal, setActiveOfferInModal, setOffer, getOfferFunc }) {
   return (
     <>
-      <Modal padding='20px' isOpen={isOpen} onClose={onClose} isCentered closeOnOverlayClick={true} size='md'>
+      <Modal padding='20px' isOpen={isOfferOpen} onClose={onOfferClose} closeOnOverlayClick={true}>
         <ModalOverlay filter='opacity(0.7);background-color:#4b9ce2' />
-        <ModalContent >
-          <div className='modal'>
+        <ModalContent width={{ sm: '355px', md: '480px' }} top={{ sm: '-50px', md: '245px' }} >
+          <div className='offerModal'>
 
             <div className='modalHeader'>
               <h1>Teklif Ver</h1>
-              <div className='closeIcon' onClick={() => onClose()}><CloseIcon /></div>
+              <div className='closeIcon' onClick={() => onOfferClose()}><CloseIcon /></div>
             </div>
 
             <div className="modalProduct">

@@ -1,21 +1,25 @@
+/* eslint-disable no-unused-vars */
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import useGetTokenFromCookie from '../hooks/useGetTokenFromCookie';
+import { getUserMe } from '../services/userService';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState({});
 
-  useEffect(() => {
-    let email = localStorage.getItem('email');
-    let id = localStorage.getItem('id');
-    let token = useGetTokenFromCookie();
-    //console.log('token :' + token);
-    token && setAuth({ id, email, authToken: token });
 
+  useEffect(() => {
+    let token = useGetTokenFromCookie();
+    token && getUserInfo(token);
   }, []);
 
-  //console.log(auth);
+
+  const getUserInfo = async (token) => {
+    //if there is token in cookie, that will be request to api to gets user info.
+    const res = await getUserMe();
+    setAuth({ id: res.data.id, email: res.data.email, authToken: token });
+  };
 
   const values = {
     auth,
