@@ -83,23 +83,19 @@ function ProductDetail() {
   };
 
   const getBuyFunc = async (id) => {
-    console.log(id);
     setBuyLoading(true);
     const res = await putProductSold(id);
-    console.log(res.status);
     if (res.status == 200) {
       setBuyLoading(false);
       useDisplaySuccessMess('Satın Alındı');
     }
     else {
       setBuyLoading(true);
-      console.log(res);
     }
     onBuyClose();
     setIsSold(true);
   };
 
-  console.log(product);
   const openModalsIfLoggin = (state) => {
     //if there is not token in auth. do not offer or buy.
     if (!auth.authToken) {
