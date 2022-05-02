@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import baseURL from '../constants/constants';
 import LoadingCircleIcons from '../constants/icons/LoadingCircleIcons';
 import { useAuth } from '../context/AuthProviderContext';
+
 import { deleteOffer, getOffer } from '../services/offerService';
 import OfferModal from '../components/OfferModal';
 import useDisplayErrorMess from '../hooks/useDisplayErrorMess';
@@ -37,7 +38,13 @@ function ProductDetail() {
 
   useEffect(() => {
     getProduct();
+    //auto scroll to top.
+    window.scrollTo(0, 0);
   }, [isOffer, isSold]);
+
+  useEffect(() => {
+  }, [isOffer, isSold]);
+
 
 
   const getProduct = async () => {
@@ -47,7 +54,7 @@ function ProductDetail() {
     setProduct(data);
     //if auth context has id, that mean user is loggin. offers will be shown.
     let offers = data.offers;
-    let isUserOffer = offers.filter(offer => offer.users_permissions_user == auth.id);
+    let isUserOffer = offers.filter(offer => offer.users_permissions_user === auth.id);
     setUserOffer(isUserOffer);
     setLoading(false);
   };
@@ -62,7 +69,7 @@ function ProductDetail() {
       newOffer = (product.price * offer.value) / 100;
     }
 
-    await getOffer(product.id, auth.id, newOffer);
+    await getOffer(product?.id, auth?.id, newOffer);
     setIsOffer(true);
     setOffer({});
     setActiveOfferInModal('');
@@ -141,9 +148,12 @@ function ProductDetail() {
                 <div className='price'>
                   {product.price} TL
                   {
-                    !product.isSold &&
-                    userOffer.length > 0 &&
-                    <div className='offer'>Verilen Teklif: <span>{userOffer[0]?.offerPrice.toLocaleString()} TL</span>  </div>
+                    !product.isSold && (
+                      auth?.authToken &&
+                      userOffer.length > 0 &&
+                      <div className='offer'>Verilen Teklif: <span>{userOffer[0]?.offerPrice.toLocaleString()} TL</span>  </div>
+                    )
+
                   }
                 </div>
 
@@ -155,13 +165,15 @@ function ProductDetail() {
 
                       <button className='buy' onClick={() => openModalsIfLoggin('Satın Al')} >Satın Al</button>
                       {
-                        userOffer.length > 0
-                          ?
-                          <button className='offer' disabled={removeOfferLoading && true} onClick={() => removeOffer(userOffer[0]?.id)}>
-                            {removeOfferLoading ? <LoadingCircleIcons size={20} /> : 'Teklifi Geri Çek'}
-                          </button>
-                          : product.isOfferable && <button className='offer' onClick={() => openModalsIfLoggin('Teklif Ver')}>Teklif Ver</button>
-
+                        auth?.authToken
+                          ? (
+                            userOffer.length > 0
+                              ?
+                              <button className='offer' disabled={removeOfferLoading && true} onClick={() => removeOffer(userOffer[0]?.id)}>
+                                {removeOfferLoading ? <LoadingCircleIcons size={20} /> : 'Teklifi Geri Çek'}
+                              </button>
+                              : product.isOfferable && <button className='offer' onClick={() => openModalsIfLoggin('Teklif Ver')}>Teklif Ver</button>)
+                          : <button className='offer' onClick={() => openModalsIfLoggin('Teklif Ver')}>Teklif Ver</button>
                       }
 
                     </div>

@@ -45,7 +45,7 @@ function Home() {
       setLoading(false);
     }
     else {
-      let filter = products.filter(product => product.category.name == category);
+      let filter = products.filter(product => product?.category?.name == category);
       setFilteredProducts(filter);
       setLoading(false);
     }

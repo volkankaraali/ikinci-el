@@ -1,12 +1,12 @@
 import axios from 'axios';
-import useGetTokenFromCookie from '../hooks/useGetTokenFromCookie';
-import baseURL from './constants';
 
+import baseURL from './constants';
 
 const withTokenAxios = axios.create({ baseURL });
 const noTokenAxios = axios.create({ baseURL });
 
-const token = useGetTokenFromCookie();
+let cookie = document.cookie;
+let token = cookie.split('=')[1];
 
 withTokenAxios.interceptors.request.use(
   config => {
