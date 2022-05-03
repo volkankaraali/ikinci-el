@@ -76,7 +76,7 @@ function Home() {
               : (
 
                 filteredProducts.length > 0
-                  ? filteredProducts.map(product => (<Link to={`detail/${product.id}`} key={product.id}> <ProductCard brand={product.brand} color={product.color} price={product.price} url={product.image?.url} /></Link>))
+                  ? filteredProducts.map(product => (<Link to={`detail/${product.id}`} key={product.id}> <ProductCard product={product} /></Link>))
                   : <div className='noProduct' > Ürün bulunmuyor.</div>
               )
           }

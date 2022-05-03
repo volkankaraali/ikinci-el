@@ -6,7 +6,7 @@ import baseURL from '../constants/constants';
 import LoadingCircleIcons from '../constants/icons/LoadingCircleIcons';
 import { useAuth } from '../context/AuthProviderContext';
 
-import { deleteOffer, getOffer } from '../services/offerService';
+import { deleteOffer, addOffer } from '../services/offerService';
 import OfferModal from '../components/OfferModal';
 import useDisplayErrorMess from '../hooks/useDisplayErrorMess';
 import { getProductById, putProductSold } from '../services/productService';
@@ -59,7 +59,7 @@ function ProductDetail() {
     setLoading(false);
   };
 
-  const getOfferFunc = async () => {
+  const addOfferFunc = async () => {
     setGetOfferLoading(true);
     let newOffer;
     if (offer.isTextOffer) {
@@ -69,7 +69,7 @@ function ProductDetail() {
       newOffer = (product.price * offer.value) / 100;
     }
 
-    await getOffer(product?.id, auth?.id, newOffer);
+    await addOffer(product?.id, auth?.id, newOffer);
     setIsOffer(true);
     setOffer({});
     setActiveOfferInModal('');
@@ -197,7 +197,7 @@ function ProductDetail() {
         activeOfferInModal={activeOfferInModal}
         setActiveOfferInModal={setActiveOfferInModal}
         setOffer={setOffer}
-        getOfferFunc={getOfferFunc}
+        addOfferFunc={addOfferFunc}
         product={product}
       />
       <BuyModal

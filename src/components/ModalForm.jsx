@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import LoadingCircleIcon from '../constants/icons/LoadingCircleIcons';
 
-function ModalForm({ getOfferLoading, activeOfferInModal, setOffer, setActiveOfferInModal, getOfferFunc }) {
+function ModalForm({ getOfferLoading, activeOfferInModal, setOffer, setActiveOfferInModal, addOfferFunc }) {
 
   useEffect(() => {
     const offers = document.querySelector('.offers');
@@ -59,7 +59,7 @@ function ModalForm({ getOfferLoading, activeOfferInModal, setOffer, setActiveOff
       </label>
 
       <div className='buttonContainer'>
-        <button type='submit' disabled={getOfferLoading && true} onClick={() => getOfferFunc()}>
+        <button type='submit' disabled={getOfferLoading && true} onClick={() => addOfferFunc()}>
           {
             getOfferLoading ? <LoadingCircleIcon color='white' size={20} /> : 'Onayla'
           }

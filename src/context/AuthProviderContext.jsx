@@ -14,6 +14,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
 
+
   const getUserInfo = async (token) => {
     //if there is token in cookie, that will be request to api to gets user info.
     const res = await getUserMe();

@@ -4,7 +4,7 @@ import baseURL from '../constants/constants';
 import CloseIcon from '../constants/icons/CloseIcon';
 import ModalForm from './ModalForm';
 
-function OfferModal({ isOfferOpen, onOfferClose, getOfferLoading, product, activeOfferInModal, setActiveOfferInModal, setOffer, getOfferFunc }) {
+function OfferModal({ isOfferOpen, onOfferClose, getOfferLoading, product, activeOfferInModal, setActiveOfferInModal, setOffer, addOfferFunc }) {
   return (
     <>
       <Modal padding='20px' isOpen={isOfferOpen} onClose={onOfferClose} closeOnOverlayClick={true}>
@@ -28,7 +28,7 @@ function OfferModal({ isOfferOpen, onOfferClose, getOfferLoading, product, activ
             </div>
 
             <div className='modalOffers'>
-              <ModalForm getOfferLoading={getOfferLoading} activeOfferInModal={activeOfferInModal} setActiveOfferInModal={setActiveOfferInModal} setOffer={setOffer} getOfferFunc={getOfferFunc} />
+              <ModalForm getOfferLoading={getOfferLoading} activeOfferInModal={activeOfferInModal} setActiveOfferInModal={setActiveOfferInModal} setOffer={setOffer} addOfferFunc={addOfferFunc} />
             </div>
 
           </div>
