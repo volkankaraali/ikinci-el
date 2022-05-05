@@ -1,7 +1,8 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
+
 import baseURL from '../constants/constants';
 import LoadingCircleIcon from '../constants/icons/LoadingCircleIcons';
+import NoImage from '../images/undefinedProduct.jpg';
 
 function UserTakenOffers({ product, offer, acceptOffer, rejectOffer }) {
 
@@ -25,7 +26,7 @@ function UserTakenOffers({ product, offer, acceptOffer, rejectOffer }) {
 
   return (
     <div className='takenOffers'>
-      <img src={baseURL + product?.image?.url} alt={product?.name} />
+      <img src={product?.image?.url ? baseURL + product?.image?.url : NoImage} alt={product?.name} />
       <div className='offerContainer'>
         <div className='info'>
           <h1>{product?.name}</h1>

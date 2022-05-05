@@ -12,7 +12,7 @@ import useDisplayErrorMess from '../hooks/useDisplayErrorMess';
 import { getProductById, putProductSold } from '../services/productService';
 import BuyModal from '../components/BuyModal';
 import useDisplaySuccessMess from '../hooks/useDisplaySuccessMes';
-
+import NoImage from '../images/undefinedProduct.jpg';
 
 
 function ProductDetail() {
@@ -35,6 +35,7 @@ function ProductDetail() {
   //for chakra modal
   const { isOpen: isOfferOpen, onOpen: onOfferOpen, onClose: onOfferClose } = useDisclosure();
   const { isOpen: isBuyOpen, onOpen: onBuyOpen, onClose: onBuyClose } = useDisclosure();
+
 
   useEffect(() => {
     getProduct();
@@ -125,7 +126,7 @@ function ProductDetail() {
         {
           loading ? <LoadingCircleIcons size={30} /> :
             <>
-              <img src={`${baseURL}${product?.image?.url}`} alt={product.name} />
+              <img src={product?.image?.url ? baseURL + product?.image?.url : NoImage} alt={product.name} />
               <div className='productBody'>
 
                 <h1 className='title'>{product.name}</h1>

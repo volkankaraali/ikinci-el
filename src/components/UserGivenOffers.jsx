@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import baseURL from '../constants/constants';
 import LoadingCircleIcon from '../constants/icons/LoadingCircleIcons';
-
+import NoImage from '../images/undefinedProduct.jpg';
 function UserGivenOffers({ offer, product, buyProduct }) {
 
   const [loading, setLoading] = useState(false);
@@ -14,7 +14,7 @@ function UserGivenOffers({ offer, product, buyProduct }) {
 
   return (
     <div className='givenOffers'>
-      <img src={baseURL + product?.image?.url} alt={product?.name} />
+      <img src={product?.image?.url ? baseURL + product?.image?.url : NoImage} alt={product?.name} />
       <div className='offerContainer'>
         <div className='info'>
           <h1>{product?.name}</h1>
