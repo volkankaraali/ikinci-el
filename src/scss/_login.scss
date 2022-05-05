@@ -117,6 +117,52 @@
     }
 }
 
+
+@media screen and (max-width:425px) {
+    .login{
+        height: 100%;
+        .leftSide{
+            display: none;
+        }
+
+        .rightSide{
+
+            .logo{
+                width: 148px;
+                height: 48px;
+                margin-top: 28px;
+                margin-bottom: 24px;
+
+                svg{
+                    width: 148px;
+                    height: 48px;
+                }
+    
+            }
+            .loginInfoDiv{
+                width: 355px;
+                height: 435px;
+                padding: 20px 22px;
+    
+                .subTitle{
+                    margin-bottom: 30px;
+                }
+    
+                .registerForm{
+                    div:nth-child(2){
+                        margin-bottom: 20px;
+                    }
+                }
+    
+                .registerForm{
+                    width: 315px !important;
+                }
+            }
+        }
+    }
+}
+
+
 @media screen and (max-width:375px){
 
     .login{
@@ -127,7 +173,7 @@
     
         .rightSide{
             height: 100vh;
-            padding: 0px 10px;
+            padding: 0px 20px;
     
             .logo{
                 width: 148px;
