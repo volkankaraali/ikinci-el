@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+
 import { Switch } from '@mantine/core';
 import SelectOptions from '../components/SelectOptions';
 import DeleteIcon from '../constants/icons/DeleteIcon';
@@ -11,17 +12,20 @@ import { ProductAddShema } from '../constants/yupSchemas/ProudctAddSchema';
 import { addProduct } from '../services/productService';
 import ImageDragDrop from '../components/ImageDragDrop';
 import { useAuth } from '../context/AuthProviderContext';
+import useDisplaySuccessMess from '../hooks/useDisplaySuccessMes';
+import useDisplayErrorMess from '../hooks/useDisplayErrorMess';
+import LoadingCircleIcon from '../constants/icons/LoadingCircleIcons';
 
 function ProductAdd() {
+
+  const { auth } = useAuth();
 
   const [image, setImage] = useState([]);
   const [brands, setBrands] = useState([]);
   const [categories, setCategories] = useState([]);
   const [colors, setColors] = useState([]);
   const [usingStatus, setUsingStatus] = useState([]);
-
-  const { auth } = useAuth();
-
+  const [loading, setLoading] = useState(false);
 
 
   useEffect(() => {
@@ -52,7 +56,8 @@ function ProductAdd() {
     setUsingStatus(res.data);
   };
 
-  const handleFormSubmit = async (formikData) => {
+  const handleFormSubmit = async (formikData, resetForm, setFieldValue) => {
+    setLoading(true);
     let category = categories.find(item => item.name == formikData.category);
     const formData = new FormData();
     formData.append('files.image', image.file);
@@ -69,6 +74,23 @@ function ProductAdd() {
     }));
     const product = await addProduct(formData);
     console.log(product);
+    if (product.status == 200) {
+      useDisplaySuccessMess('Ürün eklendi.');
+    }
+    else {
+      useDisplayErrorMess('Ürün ekleme başarısız.');
+    }
+    setLoading(false);
+    //resetin all formik data
+    resetForm();
+    setFieldValue('category', '');
+    setFieldValue('brand', '');
+    setFieldValue('category', '');
+    setFieldValue('color', '');
+    setFieldValue('usingStatus', '');
+    setFieldValue('offerOption', false);
+    setFieldValue('image', '');
+    setImage('');
   };
 
   return (
@@ -88,8 +110,8 @@ function ProductAdd() {
         }}
 
         validationSchema={ProductAddShema}
-        onSubmit={(auth) => {
-          handleFormSubmit(auth);
+        onSubmit={(auth, { resetForm, setFieldValue }) => {
+          handleFormSubmit(auth, resetForm, setFieldValue);
         }}
       >
         {
@@ -98,23 +120,16 @@ function ProductAdd() {
               <div className="row-1">
                 <div className="productDetails">
                   <h1>Ürün Detayları</h1>
-                  {errors.title && <div>{errors.title}</div>}
-                  {errors.description && <div>{errors.description}</div>}
-                  {errors.category && <div>{errors.category}</div>}
-                  {errors.brand && <div>{errors.brand}</div>}
-                  {errors.color && <div>{errors.color}</div>}
-                  {errors.usingStatus && <div>{errors.usingStatus}</div>}
-                  {errors.price && <div>{errors.price}</div>}
-                  {errors.offerOption && <div>{errors.offerOption}</div>}
-                  {errors.image && <div>{errors.image}</div>}
                   <div className='productDetailContainer' >
                     <div className='productName'>
                       <label>Ürün Adı</label>
-                      <input className='inputProductName' type="text" name='title' value={values.title} onChange={handleChange} placeholder='Örnek: Iphone 12 Pro Max' />
+                      <input className={`inputProductName ${errors.title ? 'errorInput' : ''}`} type="text" name='title' value={values.title} onChange={handleChange} placeholder='Örnek: Iphone 12 Pro Max' />
+                      {errors.title && <span className='errorText'>{errors.title}</span>}
                     </div>
                     <div className='productDescription'>
                       <label>Açıklama</label>
-                      <textarea type="text" name='description' value={values.description} onChange={handleChange} placeholder='Ürün açıklaması girin' />
+                      <textarea className={`${errors.description ? 'errorInput' : ''}`} type="text" name='description' value={values.description} onChange={handleChange} placeholder='Ürün açıklaması girin' />
+                      {errors.description && <span className='errorText'>{errors.description}</span>}
                     </div>
                     <div className="productProperties">
                       <div className='row'>
@@ -122,14 +137,19 @@ function ProductAdd() {
                           <label htmlFor="">Kategori</label>
                           <SelectOptions
                             name='category' value={values.category} setFieldValue={setFieldValue}
+                            error={errors.category}
                             data={categories.map(item => item.name)}
                           />
+                          {errors.category && <span className='errorText'>{errors.category}</span>}
                         </div>
                         <div className='productBrand'>
                           <label htmlFor="">Marka</label>
                           <SelectOptions
                             name='brand' value={values.brand} setFieldValue={setFieldValue}
+                            error={errors.brand}
                             data={brands.map(item => item.name)} />
+                          {errors.brand && <span className='errorText'>{errors.brand}</span>}
+
                         </div>
                       </div>
                       <div className='row'>
@@ -137,24 +157,33 @@ function ProductAdd() {
                           <label htmlFor="">Renk</label>
                           <SelectOptions
                             name='color' value={values.color} setFieldValue={setFieldValue}
+                            error={errors.color}
                             data={colors.map(item => item.name)} />
+                          {errors.color && <span className='errorText'>{errors.color}</span>}
+
                         </div>
                         <div className='productUsingStatus'>
                           <label htmlFor="">Kullanım Durumu</label>
                           <SelectOptions
                             name='usingStatus' value={values.usingStatus} setFieldValue={setFieldValue}
+                            error={errors.usingStatus}
                             data={usingStatus.map(item => item.name)} />
+                          {errors.usingStatus && <span className='errorText'>{errors.usingStatus}</span>}
+
                         </div>
                       </div>
                     </div>
 
                     <div className='productPrice'>
                       <label htmlFor="">Fiyat</label>
-                      <div>
+                      <div className={`${errors.price ? 'errorInput' : ''}`}>
                         <input type="number" name='price' value={values.price} onChange={handleChange} />
                         <span>TL</span>
                       </div>
+                      {errors.price && <span className='errorText'>{errors.price}</span>}
                     </div>
+
+
 
                     <div className='productOfferOption'>
                       <label htmlFor="">Teklif Opsiyonu</label>
@@ -169,6 +198,7 @@ function ProductAdd() {
                     image.length === 0 &&
                     <>
                       <ImageDragDrop setFieldValue={setFieldValue} setImage={setImage} />
+                      {errors.image && <span className='errorText'>{errors.image}</span>}
                     </>
                   }
                   {
@@ -177,16 +207,17 @@ function ProductAdd() {
                       <div className='image'>
                         <button onClick={() => { setImage([]); setFieldValue('image', ''); }}> <DeleteIcon />  </button>
                         <img src={image?.preview} alt="" />
-                        {values.image}
                       </div>
                     )
                   }
-
-
                 </div>
               </div>
               <div className="row-2">
-                <button type='submit' className='submitButton' onClick={handleSubmit}>Kaydet</button>
+                <button type='submit' className='submitButton' disabled={loading && true} onClick={handleSubmit}>
+                  {
+                    loading ? <LoadingCircleIcon size={30} color='white' /> : 'Kaydet'
+                  }
+                </button>
               </div>
             </form>
         }

@@ -2,7 +2,7 @@ import { Select } from '@mantine/core';
 import React from 'react';
 import DownArrowIcon from '../constants/icons/DownArrowIcon';
 
-function SelectOptions({ name, value, setFieldValue, data }) {
+function SelectOptions({ name, value, setFieldValue, data, error }) {
 
   return (
     <Select
@@ -12,7 +12,8 @@ function SelectOptions({ name, value, setFieldValue, data }) {
       rightSection={<DownArrowIcon />}
       placeholder="Kategori Seç"
       classNames={{
-        input: 'categoryInput',
+        input: `categoryInput ${error ? 'errorInput' : ''}`,
+
       }}
       styles={{
         dropdown: { marginTop: '-9px', boxShadow: '0px 3px 12px #1E36482E;' },
