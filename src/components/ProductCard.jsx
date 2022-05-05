@@ -13,7 +13,7 @@ function ProductCard(props) {
         </div>
       </div>
       <div className="footer">
-        <span>{props.product?.price.toLocaleString()} TL</span>
+        <span>{props.product?.price?.toLocaleString()} TL</span>
       </div>
     </div>
   );

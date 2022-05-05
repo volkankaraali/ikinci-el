@@ -60,7 +60,7 @@
                 margin-bottom: 161px;
             }
             .productCard{
-                width: 280px;
+                //width: 280px;
                 height: 392px;
                 display: flex;
                 flex-direction: column;
@@ -116,10 +116,20 @@
         .container{
             padding: 10px 10px;
 
+            .categories{
+                nav {
+                    a{
+                        margin-right: 25px;
+                        font-size: 18px;
+                    }
+                }
+            }
             .products{
-                gap: 15px 5px;
-                justify-content: center;
+                gap: 15px 0px;
+                justify-content: space-between;
+                
                 .productCard{
+                    width: 170px;
                     max-width: 190px;
                 }
             }
@@ -127,7 +137,7 @@
     }
 }
 
-@media screen and (max-width:375px) {
+@media screen and (min-width:321px) and (max-width:375px) {
     .home{
         .container{
             padding: 10px 10px;
@@ -142,11 +152,11 @@
             }
 
             .products{
-                gap: 15px 5px;
+                gap: 15px 2px;
                 margin-bottom: 0px;
-                justify-content: center;
+                justify-content: space-between;
                 .productCard{
-                    max-width: 170px;
+                    max-width: 148px;
                     height: 266px;
 
                     .body{
@@ -170,13 +180,33 @@
 @media screen and (max-width:320px){
     .home{
         .container{
-
-            
+            padding: 10px 10px;
+            .categories{
+                nav {
+                    a{
+                        margin-right: 25px;
+                        font-size: 18px;
+                    }
+                }
+            }
             .products{
-                gap: 15px 10px;
+                gap: 10px 0px;
                 
                 .productCard{
-                    width: 145px;
+                    width: 290px;
+                    height: 270px;
+
+                    .body{
+                        img{
+                            width: 100%;
+                            height: 184px;
+                        }
+
+                        .bodyHeader{
+                            flex-direction: column;
+                            align-items: flex-start;
+                        }
+                    }
                 }
             }
             
