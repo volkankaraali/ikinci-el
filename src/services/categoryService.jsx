@@ -1,7 +1,7 @@
 import { noTokenAxios, URL } from '../constants/axios';
 
 
-export const getCategories = async () => {
+export const getAllCategories = async () => {
   try {
     const res = await noTokenAxios.get(URL.categories);
     return res;

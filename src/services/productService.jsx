@@ -48,3 +48,13 @@ export const getAllProductCount = async () => {
 
   }
 };
+
+export const addProduct = async (formData) => {
+  try {
+    const res = await withTokenAxios.post(URL.products, formData, { headers: { 'Content-Type': 'multipart/form-data' } });
+    return res;
+  } catch (error) {
+    console.log(error.response);
+
+  }
+};

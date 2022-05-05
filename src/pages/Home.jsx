@@ -6,7 +6,7 @@ import ProductCard from '../components/ProductCard';
 import LoadingCircleIcon from '../constants/icons/LoadingCircleIcons';
 import { useProducts } from '../context/ProductContext';
 import homeBanner from '../images/homeBanner.png';
-import { getCategories } from '../services/categoryService';
+import { getAllCategories } from '../services/categoryService';
 
 function Home() {
 
@@ -52,7 +52,7 @@ function Home() {
   };
 
   const getCategoriesFunc = async () => {
-    let res = await getCategories();
+    let res = await getAllCategories();
     setCategories(res.data);
   };
 

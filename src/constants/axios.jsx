@@ -25,6 +25,9 @@ export const URL = {
   products: '/products',
   usersMe: '/users/me',
   offers: '/offers',
+  brands: '/brands',
+  colors: '/colors',
+  usingStatus: '/using-statuses'
 };
 
 export { withTokenAxios, noTokenAxios };
