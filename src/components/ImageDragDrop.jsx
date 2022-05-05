@@ -8,13 +8,14 @@ function ImageDragDrop({ setFieldValue, setImage }) {
     accept: {
       'image/*': ['.jpeg', '.png', '.jpg']
     },
-    maxSize: 400,
+    maxSize: 400000,
     multiple: false,
     onDrop: acceptedFiles => {
       setImage({ file: acceptedFiles[0], preview: URL.createObjectURL(acceptedFiles[0]) });
       setFieldValue('image', URL.createObjectURL(acceptedFiles[0]));
-    }
+    },
   });
+
   return (
     <div className='imageDropzone' {...getRootProps()} >
       <ImageUploadIcon />
