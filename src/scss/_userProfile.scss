@@ -214,8 +214,7 @@
     }
 }
 
-
-@media screen and (max-width:375px) {
+@media screen and (max-width:425px) {
     .userProfile{
         padding: 10px 10px;
 
@@ -261,16 +260,23 @@
 
             .givenOffers{
                 height: 134px;
+                max-width: 100%;
                 .offerContainer{
                     display: flex;
                     flex-direction: column;
+                    max-width: 100%;
+                    align-items: flex-start;
 
                     .info{
+                        width: 100%;
                         h1{
                             text-overflow: ellipsis;
                             white-space: nowrap;
                             overflow: hidden;
                             width: 200px;
+                        }
+                        div{
+                            width: 100%;
                         }
                     }
 
@@ -286,6 +292,186 @@
                             width: 100%;
                             display: flex;
                             justify-content: center;
+                        }
+                    }
+                }
+            }
+        }
+
+        
+    }
+}
+
+@media screen and (max-width:375px) {
+    .userProfile{
+        padding: 10px 10px;
+
+        .productInfo{
+            //for chakra table
+            .chakra-tabs{
+                .chakra-tabs__tablist{
+                    display: flex;
+                    padding: 0px 20px;
+                }
+                .chakra-tabs__tab-panels{
+                    .chakra-tabs__tab-panel {
+                        padding: 10px;
+                    }
+                } 
+            }
+
+            .takenOffers{
+                height: 134px;
+
+                .offerContainer{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+
+                    .info{
+                        h1{
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            width: 200px;
+                        }
+                    }
+                    .buttons{
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                        button{
+                            width: 108px;
+                        }
+                    }
+                }
+            }
+
+            .givenOffers{
+                height: 134px;
+                max-width: 100%;
+                .offerContainer{
+                    display: flex;
+                    flex-direction: column;
+                    max-width: 100%;
+                    align-items: flex-start;
+                    .info{
+                        width: 100%;
+                        h1{
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            width: 200px;
+                        }
+                        div{
+                            width: 100%;
+                        }
+                    }
+
+                    .buttons{
+                        width: 100%;
+                        display: flex;
+
+                        .confirm{
+                            width: 108px;
+                            margin-right:31px;
+                        }
+                        .offerWaiting{
+                            width: 100%;
+                            display: flex;
+                            justify-content: center;
+                        }
+                    }
+                }
+            }
+        }
+
+        
+    }
+}
+
+@media screen and (max-width:320px) {
+    .userProfile{
+        padding: 10px 10px;
+
+        .productInfo{
+            //for chakra table
+            .chakra-tabs{
+                .chakra-tabs__tablist{
+                    display: flex;
+                    padding: 0px 20px;
+                }
+                .chakra-tabs__tab-panels{
+                    .chakra-tabs__tab-panel {
+                        padding: 10px;
+                    }
+                } 
+            }
+
+            .takenOffers{
+                height: 134px;
+
+                .offerContainer{
+                    display: flex;
+                    flex-direction: column;
+
+                    .info{
+                        h1{
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            width: 200px;
+                        }
+                    }
+                    .buttons{
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                        button{
+                            width: 108px;
+                        }
+                    }
+                }
+            }
+
+            .givenOffers{
+                height: 134px;
+                img{
+                    width: 50px;
+                }
+                .offerContainer{
+                    display: flex;
+                    flex-direction: column;
+
+                    .info{
+                        width: 100%;
+                        h1{
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            width: 200px;
+                        }
+                        div{
+                            width: 100%;
+                        }
+                    }
+
+                    .buttons{
+                        width: 100%;
+                        display: flex;
+
+                        .confirm{
+                            width: 108px;
+                            margin-right:31px;
+                        }
+                        .offerWaiting{
+                            width: 100%;
+                            display: flex;
+                            justify-content: center;
+                        }
+                        .bought{
+                            height: 30px;
+                            font-size: 14px;
                         }
                     }
                 }

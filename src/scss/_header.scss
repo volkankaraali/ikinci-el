@@ -43,13 +43,18 @@ header{
 
 }
 
+
+@media screen and (min-width:376px) and (max-width:425px){
+    header{
+        padding: 0 5px;
+    }
+}
+
 @media screen and (max-width:375px) {
     header{
         padding: 0 10px;
         .container{
             .menu{
-
-
                 .addProduct{
                     width: 40px;
                     svg{
