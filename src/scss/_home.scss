@@ -117,10 +117,10 @@
             padding: 10px 10px;
 
             .products{
-                gap: 15px 10px;
-                
+                gap: 15px 5px;
+                justify-content: center;
                 .productCard{
-                    width: 196px;
+                    max-width: 190px;
                 }
             }
         }
@@ -142,10 +142,11 @@
             }
 
             .products{
-                gap: 15px 9px;
+                gap: 15px 5px;
                 margin-bottom: 0px;
+                justify-content: center;
                 .productCard{
-                    width: 173px;
+                    max-width: 170px;
                     height: 266px;
 
                     .body{
