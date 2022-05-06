@@ -223,7 +223,25 @@
     }
 }
 
-@media screen and (max-width:425px) {
+@media screen and (min-width:1026px) and (max-width:1440px) {
+    .userProfile{
+        padding: 10px 10px;
+    }
+}
+@media screen and (min-width:769px) and (max-width:1024px) {
+    .userProfile{
+        padding: 10px 10px;
+    }
+}
+
+@media screen and (min-width:426px) and (max-width:768px) {
+    .userProfile{
+        padding: 10px 10px;
+
+    }
+}
+
+@media screen and (min-width:376px) and (max-width:425px) {
     .userProfile{
         padding: 10px 10px;
 
@@ -311,7 +329,7 @@
     }
 }
 
-@media screen and (max-width:375px) {
+@media screen and (min-width:321px) and (max-width:375px) {
     .userProfile{
         padding: 10px 10px;
 
