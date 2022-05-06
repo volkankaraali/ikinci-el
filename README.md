@@ -54,7 +54,8 @@ ana sayfaya yönlendirme yapmaktadır.
   * [images](src/images) proje içerisinde kullanılan görselleri içermekte.
 
 * ### pages
-  * [pages](src/pages), proje içerisindeki path olarak ulaşılabilecek ekranları içerir. (Home,Login,Register,ProductAdd,ProductDetail,UserProfile)
+  * [pages](src/pages), proje içerisindeki path olarak ulaşılabilecek ekranları içerir. 
+   ([Home](src/pages/Home.jsx),[Login](src/pages/Login.jsx),[Register](src/pages/Register.jsx),[ProductAdd](src/pages/ProductAdd.jsx),[ProductDetail](src/pages/ProductDetail.jsx),[UserProfile](src/pages/UserProfile.jsx))
 * ### scss
   * [scss](src/scss), projenin css kodlarını içerir. scss formatında yazıldı. index.scss içerisine her ekran için ayrı scss dosyası oluşturulup ekran index içerisine import edildi.
 
