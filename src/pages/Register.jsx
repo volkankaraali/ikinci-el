@@ -46,11 +46,11 @@ function Register() {
 
   return (
     <div className='register'>
-      <div className='leftSide'>
+      <div className='registerLeftSide'>
         <img src={registerLoginImage} alt="ikinci el" />
       </div>
-      <div className='rightSide'>
-        <div className='logo'><Logo width={224} height={73} /></div>
+      <div className='registerRightSide'>
+        <div className='logo'><Link to='/'><Logo width={224} height={73} /> </Link></div>
 
 
         <div className='registerInfoDiv'>

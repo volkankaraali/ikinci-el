@@ -46,11 +46,11 @@ function Login() {
 
   return (
     <div className='login'>
-      <div className='leftSide'>
+      <div className='loginLeftSide'>
         <img src={registerLoginImage} alt="ikinci el" />
       </div>
-      <div className='rightSide'>
-        <div className='logo'><Logo width={224} height={73} /></div>
+      <div className='loginRightSide'>
+        <div className='logo'> <Link to='/'><Logo width={224} height={73} /></Link> </div>
 
 
         <div className='loginInfoDiv'>
