@@ -109,7 +109,81 @@
     
 }
 
+@media screen and (min-width:1026px) and (max-width:1440px) {
+    .home{
 
+        .container{
+            padding: 10px 10px;
+
+            .categories{
+                nav {
+                    a{
+                        margin-right: 25px;
+                        font-size: 18px;
+                    }
+                }
+            }
+            .products{
+                gap: 15px 5px;
+                justify-content: center;
+                
+                .productCard{
+                    width: 250px;
+                }
+            }
+        }
+    }
+}
+@media screen and (min-width:769px) and (max-width:1024px) {
+    .home{
+
+        .container{
+            padding: 10px 10px;
+
+            .categories{
+                nav {
+                    a{
+                        margin-right: 25px;
+                        font-size: 18px;
+                    }
+                }
+            }
+            .products{
+                gap: 15px 10px;
+                justify-content: center;
+                
+                .productCard{
+                    width: 190px;
+                }
+            }
+        }
+    }
+}
+@media screen and (min-width:426px) and (max-width:768px) {
+    .home{
+
+        .container{
+            padding: 10px 10px;
+
+            .categories{
+                nav {
+                    a{
+                        margin-right: 25px;
+                        font-size: 18px;
+                    }
+                }
+            }
+            .products{
+                gap: 15px 10px;
+                justify-content: center;
+                
+                .productCard{
+                    width: 170px;
+                }
+            }
+        }
+    }
+}
 @media screen and (min-width:376px) and (max-width:425px) {
     .home{
 
@@ -125,18 +199,16 @@
                 }
             }
             .products{
-                gap: 15px 0px;
-                justify-content: space-between;
+                gap: 15px 10px;
+                justify-content: center;
                 
                 .productCard{
                     width: 170px;
-                    max-width: 190px;
                 }
             }
         }
     }
 }
-
 @media screen and (min-width:321px) and (max-width:375px) {
     .home{
         .container{
@@ -152,9 +224,9 @@
             }
 
             .products{
-                gap: 15px 2px;
+                gap: 15px 10px;
                 margin-bottom: 0px;
-                justify-content: space-between;
+                justify-content: center;
                 .productCard{
                     max-width: 148px;
                     height: 266px;
@@ -176,7 +248,6 @@
         }
     }
 }
-
 @media screen and (max-width:320px){
     .home{
         .container{

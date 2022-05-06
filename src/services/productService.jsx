@@ -3,7 +3,7 @@ import { noTokenAxios, URL, withTokenAxios } from '../constants/axios';
 
 export const getProducts = async () => {
   try {
-    const res = await noTokenAxios.get(URL.products);
+    const res = await noTokenAxios.get(URL.products + '?_limit=200');
     return res;
   } catch (error) {
     console.log(error.response.data);
