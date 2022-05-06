@@ -5,7 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AuthProvider } from './context/AuthProviderContext';
 import { ChakraProvider } from '@chakra-ui/react';
-import custumTheme from './chakraCustumTheme';
+import customTheme from './chakraCustomTheme';
 import ProductProvider from './context/ProductContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -14,7 +14,7 @@ root.render(
     <BrowserRouter>
       <AuthProvider>
         <ProductProvider>
-          <ChakraProvider theme={custumTheme}>
+          <ChakraProvider theme={customTheme}>
             <Routes>
               <Route path='/*' element={<App />} />
             </Routes>

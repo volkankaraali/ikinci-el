@@ -3,6 +3,7 @@ import React from 'react';
 import LoadingCircleIcon from '../constants/icons/LoadingCircleIcons';
 
 function BuyModal({ buyLoading, isBuyOpen, onBuyClose, productId, getBuyFunc }) {
+  //custom style added for modal.
   return (
     <>
       <Modal padding='20px' isOpen={isBuyOpen} onClose={onBuyClose} isCentered closeOnOverlayClick={true} >

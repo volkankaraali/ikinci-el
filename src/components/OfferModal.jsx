@@ -5,6 +5,7 @@ import CloseIcon from '../constants/icons/CloseIcon';
 import ModalForm from './ModalForm';
 
 function OfferModal({ isOfferOpen, onOfferClose, getOfferLoading, product, activeOfferInModal, setActiveOfferInModal, setOffer, addOfferFunc }) {
+  //custom style added for modal. 
   return (
     <>
       <Modal padding='20px' isOpen={isOfferOpen} onClose={onOfferClose} closeOnOverlayClick={true}>
