@@ -100,8 +100,8 @@ function UserProfile() {
       <div className="productInfo">
         <Tabs>
           <TabList>
-            <Tab _selected={{ color: '#4b9ce2', fontWeight: 'bold', borderBottom: '2px solid #4b9ce2' }}>Teklif Aldıklarım</Tab>
-            <Tab _selected={{ color: '#4b9ce2', fontWeight: 'bold', borderBottom: '2px solid #4b9ce2' }}>Teklif Verdiklerim</Tab>
+            <Tab _selected={{ color: '#4b9ce2', fontWeight: 'bold', borderBottom: '2px solid #4b9ce2', boxShadow: 'none' }} _active={{ boxShadow: 'none' }}>Teklif Aldıklarım</Tab>
+            <Tab _selected={{ color: '#4b9ce2', fontWeight: 'bold', borderBottom: '2px solid #4b9ce2', boxShadow: 'none' }} _active={{ boxShadow: 'none' }}>Teklif Verdiklerim</Tab>
           </TabList>
 
           <TabPanels>
