@@ -12,7 +12,7 @@
 | sass|[services](#services)
 | |[appjs](#appjsx)
 | |[indexjs](#indexjsx)|
-| |[chakraCustomtheme](#chakraCustomtheme)
+| |[chakraCustomtheme](#chakraCustomTheme)
 
 ---
 # Proje Özeti
@@ -48,7 +48,7 @@ ana sayfaya yönlendirme yapmaktadır.
  
  * ### hooks
     * [hooks](src/hooks) proje içerisinde bir çok component içinde kullanılan yapıları içermekte. 
-    * [useDisplayErrorMess](src/hooks/useDisplayErrorMess.jsx) ve [useDisplaySuccessMess](src/hooks/useDisplaySuccessMess.jsx) ekranda gösterilecek mesajın yapısı bulunmakta.her iki yapıda da **chakra-ui/toast** kullanıldı.
+    * [useDisplayErrorMess](src/hooks/useDisplayErrorMess.jsx) ve [useDisplaySuccessMess](src/hooks/useDisplaySuccessMes.jsx) ekranda gösterilecek mesajın yapısı bulunmakta.her iki yapıda da **chakra-ui/toast** kullanıldı.
     * cookie'den token bilgisinin alınması için [useGetTokenFromCookie](src/hooks/useGetTokenFromCookie.jsx) yapısı kullanılır.
 * ### images
   * [images](src/images) proje içerisinde kullanılan görselleri içermekte.
@@ -62,5 +62,5 @@ ana sayfaya yönlendirme yapmaktadır.
 * ### services
   * [services](src/services), apiye yapılacak isteklerin yönetildiği dosya. product, user, category, brand,color,offer,usingstatus gibi bilgilerin alınması için yapılacak api istekleri ilgili dosyalar içerisinde yapılır.
 
-* ### chakraCustomtheme
-  * [chakraCustomtheme](src/chakraCustomtheme.jsx), projede kullanılan chakra-ui elemanları([BuyModal](src/components/BuyModal.jsx),[OfferModal](src/components/OfferModal.jsx)) için custom tasarım bilgilerini içerir.
+* ### chakraCustomTheme
+  * [chakraCustomTheme](src/chakraCustomTheme.jsx), projede kullanılan chakra-ui elemanları([BuyModal](src/components/BuyModal.jsx),[OfferModal](src/components/OfferModal.jsx)) için custom tasarım bilgilerini içerir.
