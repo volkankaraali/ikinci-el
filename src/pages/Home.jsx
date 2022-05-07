@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import CategoriesNav from '../components/CategoriesNav';
 
 import ProductCard from '../components/ProductCard';
+import ScrollToTopButton from '../components/ScrollToTopButton';
 import LoadingCircleIcon from '../constants/icons/LoadingCircleIcons';
 import { useProducts } from '../context/ProductContext';
 import homeBanner from '../images/homeBanner.png';
@@ -82,6 +83,7 @@ function Home() {
           }
         </div>
       </div>
+      <ScrollToTopButton />
     </div >
   );
 }

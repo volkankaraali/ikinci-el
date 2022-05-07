@@ -7,6 +7,7 @@ function Layout() {
     <div className='App'>
       <Header />
       <Outlet />
+
     </div>
   );
 }

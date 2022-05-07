@@ -1,8 +1,16 @@
+.scrollTop{
+    right: 180px;
+    .scrollTopButton{
+        background-color: #4b9ce2 ;
+        padding: 5px;
+        border-radius: 8px;
+    }
+}
+
 .home{
     background-color: #f2f2f2;
     width: 100%;
     min-height: 100%;
-
     .container{
         padding: 10px 220px;
         img{
@@ -110,6 +118,9 @@
 }
 
 @media screen and (min-width:1026px) and (max-width:1440px) {
+    .scrollTop{
+        right: 50px;
+    }
     .home{
 
         .container{
@@ -135,6 +146,9 @@
     }
 }
 @media screen and (min-width:769px) and (max-width:1024px) {
+    .scrollTop{
+        right: 0px;
+    }
     .home{
 
         .container{
@@ -160,6 +174,10 @@
     }
 }
 @media screen and (min-width:426px) and (max-width:768px) {
+    .scrollTop{
+        right: 0px;
+    }
+    
     .home{
 
         .container{
@@ -185,6 +203,9 @@
     }
 }
 @media screen and (min-width:376px) and (max-width:425px) {
+    .scrollTop{
+        right: 0px;
+    }
     .home{
 
         .container{
@@ -210,6 +231,10 @@
     }
 }
 @media screen and (min-width:321px) and (max-width:375px) {
+    .scrollTop{
+        right: 0px;
+    }
+    
     .home{
         .container{
             padding: 10px 10px;
@@ -249,6 +274,9 @@
     }
 }
 @media screen and (max-width:320px){
+    .scrollTop{
+        right: 0px;
+    }
     .home{
         .container{
             padding: 10px 10px;
