@@ -8,7 +8,6 @@ export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState({});
 
   useEffect(() => {
-    console.log('a');
     getUserInfo();
   }, []);
 
@@ -22,7 +21,6 @@ export const AuthProvider = ({ children }) => {
     else {
       setAuth({});
     }
-
   };
 
   const values = {
