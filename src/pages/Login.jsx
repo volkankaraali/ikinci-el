@@ -31,6 +31,7 @@ function Login() {
       setLoading(false);
     }
     else {
+      console.log('giris');
       setAuth({ id: res.data?.user?.id, email: auth.email, authToken: res?.data?.jwt });
       document.cookie = `Auth_Token=${res.data?.jwt}`;
       useDisplaySuccessMess('Login success.');

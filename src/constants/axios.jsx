@@ -5,11 +5,12 @@ import baseURL from './constants';
 const withTokenAxios = axios.create({ baseURL });
 const noTokenAxios = axios.create({ baseURL });
 
-let cookie = document.cookie;
-let token = cookie.split('=')[1];
+
 
 withTokenAxios.interceptors.request.use(
-  config => {
+  async config => {
+    let cookie = document.cookie;
+    let token = cookie.split('=')[1];
     config.headers = {
       Authorization: `Bearer ${token}`
     };

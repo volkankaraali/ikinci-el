@@ -26,25 +26,26 @@ function UserProfile() {
   const [offerStatusChange, setOfferStatusChange] = useState(false);
 
   useEffect(() => {
-    getUserOffersFunc();
-    getUserProductsOffer();
-  }, [offerStatusChange]);
+    console.log(auth.id);
+    getUserOffersFunc(auth.id);
+    getUserProductsOffer(auth.id);
+  }, [auth, offerStatusChange]);
 
 
-  const getUserOffersFunc = async () => {
+  const getUserOffersFunc = async (id) => {
     setUserOfferLoading(true);
 
     //gets offers of logged in user.
-    const userOffers = await getOffersByUserId(auth.id);
+    const userOffers = await getOffersByUserId(id);
     setUserOffers(userOffers.data);
     setUserOfferLoading(false);
 
   };
 
-  const getUserProductsOffer = async () => {
+  const getUserProductsOffer = async (id) => {
     setUserProductOfferLoading(true);
     //gets products of the logged in user.the products are filtered according to the number of offers.
-    const myProducts = await getMyProducts(auth.id);
+    const myProducts = await getMyProducts(id);
     const myProductsHasOffers = myProducts.data.filter(product => product?.offers.length > 0);
     setUserProductsExistOffer(myProductsHasOffers);
     setUserProductOfferLoading(false);

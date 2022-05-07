@@ -7,18 +7,22 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState({});
 
-
   useEffect(() => {
-    let token = useGetTokenFromCookie();
-    token && getUserInfo(token);
+    console.log('a');
+    getUserInfo();
   }, []);
 
-
-
-  const getUserInfo = async (token) => {
+  const getUserInfo = async () => {
     //if there is token in cookie, that will be request to api to gets user info.
-    const res = await getUserMe();
-    setAuth({ id: res.data.id, email: res.data.email, authToken: token });
+    let token = useGetTokenFromCookie();
+    if (token) {
+      const res = await getUserMe();
+      setAuth({ id: res.data.id, email: res.data.email, authToken: token });
+    }
+    else {
+      setAuth({});
+    }
+
   };
 
   const values = {
