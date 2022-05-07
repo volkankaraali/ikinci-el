@@ -15,8 +15,8 @@ export const getProductById = async (id) => {
     const res = await noTokenAxios.get(URL.products + `/${id}`);
     return res;
   } catch (error) {
-    console.log(error.response.data);
-
+    //console.log(error.response);
+    return error.response;
   }
 };
 

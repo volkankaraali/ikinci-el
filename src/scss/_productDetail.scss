@@ -11,6 +11,16 @@
         padding: 16px 15px;
         display: flex;
     
+        .noFoundProduct{
+            display: flex;
+            height: 50px;
+            background-color: #FFE5E5;
+            align-items: center;
+            padding: 20px;
+            border-radius: 8px;
+            color: #F77474;
+        }
+
         img{
             min-width: 700px;
             height: 737px;

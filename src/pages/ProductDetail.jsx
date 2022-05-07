@@ -31,6 +31,7 @@ function ProductDetail() {
   const [getOfferLoading, setGetOfferLoading] = useState(false);
   const [removeOfferLoading, setRemoveOfferLoading] = useState(false);
   const [buyLoading, setBuyLoading] = useState(false);
+  const [noFindProduct, setNoFindProduct] = useState(false);
 
   //for chakra modal
   const { isOpen: isOfferOpen, onOpen: onOfferOpen, onClose: onOfferClose } = useDisclosure();
@@ -51,13 +52,19 @@ function ProductDetail() {
   const getProduct = async () => {
     setLoading(true);
     const res = await getProductById(id);
-    const data = res.data;
-    setProduct(data);
-    //if auth context has id, that mean user is loggin. offers will be shown.
-    let offers = data.offers;
-    let isUserOffer = offers.filter(offer => offer.users_permissions_user === auth.id);
-    setUserOffer(isUserOffer);
-    setLoading(false);
+    console.log(res);
+    if (res.status == 200) {
+      setProduct(res.data);
+      //if auth context has id, that mean user is loggin. offers will be shown.
+      let offers = res?.data?.offers;
+      let isUserOffer = offers.filter(offer => offer.users_permissions_user === auth.id);
+      setUserOffer(isUserOffer);
+      setLoading(false);
+    }
+    else {
+      setNoFindProduct(true);
+      setLoading(false);
+    }
   };
 
   const addOfferFunc = async () => {
@@ -124,71 +131,75 @@ function ProductDetail() {
 
       <div className="productCard">
         {
-          loading ? <LoadingCircleIcons size={30} /> :
-            <>
-              <img src={product?.image?.url ? baseURL + product?.image?.url : NoImage} alt={product.name} />
-              <div className='productBody'>
+          loading ? <LoadingCircleIcons size={30} />
+            : (
+              noFindProduct ? <div className='noFoundProduct'>Böyle bir ürün bulunmamakta.</div>
+                :
+                <>
+                  <img src={product?.image?.url ? baseURL + product?.image?.url : NoImage} alt={product.name} />
+                  <div className='productBody'>
 
-                <h1 className='title'>{product.name}</h1>
+                    <h1 className='title'>{product.name}</h1>
 
-                <div className='details'>
-                  <div className='brand'>Marka:</div>
-                  <div>{product.brand}</div>
-                </div>
-
-                <div className='details'>
-                  <div className='color'>Renk:</div>
-                  <div>{product.color}</div>
-                </div>
-
-                <div className='details'>
-                  <div className='status'>Kullanım Durumu:</div>
-                  <div>{product.status}</div>
-                </div>
-
-                <div className='price'>
-                  {product.price} TL
-                  {
-                    !product.isSold && (
-                      auth?.authToken &&
-                      userOffer.length > 0 &&
-                      <div className='offer'>Verilen Teklif: <span>{userOffer[0]?.offerPrice.toLocaleString()} TL</span>  </div>
-                    )
-
-                  }
-                </div>
-
-                {
-                  product?.isSold
-                    ? <div className='soldContainer'><div className='sold'>Bu Ürün Satışta Değil</div></div>
-                    :
-                    <div className='buttons'>
-
-                      <button className='buy' onClick={() => openModalsIfLoggin('Satın Al')} >Satın Al</button>
-                      {
-                        auth?.authToken
-                          ? (
-                            userOffer.length > 0
-                              ?
-                              <button className='offer' disabled={removeOfferLoading && true} onClick={() => removeOffer(userOffer[0]?.id)}>
-                                {removeOfferLoading ? <LoadingCircleIcons size={20} /> : 'Teklifi Geri Çek'}
-                              </button>
-                              : product.isOfferable && <button className='offer' onClick={() => openModalsIfLoggin('Teklif Ver')}>Teklif Ver</button>)
-                          : <button className='offer' onClick={() => openModalsIfLoggin('Teklif Ver')}>Teklif Ver</button>
-                      }
-
+                    <div className='details'>
+                      <div className='brand'>Marka:</div>
+                      <div>{product.brand}</div>
                     </div>
-                }
+
+                    <div className='details'>
+                      <div className='color'>Renk:</div>
+                      <div>{product.color}</div>
+                    </div>
+
+                    <div className='details'>
+                      <div className='status'>Kullanım Durumu:</div>
+                      <div>{product.status}</div>
+                    </div>
+
+                    <div className='price'>
+                      {product.price} TL
+                      {
+                        !product.isSold && (
+                          auth?.authToken &&
+                          userOffer.length > 0 &&
+                          <div className='offer'>Verilen Teklif: <span>{userOffer[0]?.offerPrice.toLocaleString()} TL</span>  </div>
+                        )
+
+                      }
+                    </div>
+
+                    {
+                      product?.isSold
+                        ? <div className='soldContainer'><div className='sold'>Bu Ürün Satışta Değil</div></div>
+                        :
+                        <div className='buttons'>
+
+                          <button className='buy' onClick={() => openModalsIfLoggin('Satın Al')} >Satın Al</button>
+                          {
+                            auth?.authToken
+                              ? (
+                                userOffer.length > 0
+                                  ?
+                                  <button className='offer' disabled={removeOfferLoading && true} onClick={() => removeOffer(userOffer[0]?.id)}>
+                                    {removeOfferLoading ? <LoadingCircleIcons size={20} /> : 'Teklifi Geri Çek'}
+                                  </button>
+                                  : product.isOfferable && <button className='offer' onClick={() => openModalsIfLoggin('Teklif Ver')}>Teklif Ver</button>)
+                              : <button className='offer' onClick={() => openModalsIfLoggin('Teklif Ver')}>Teklif Ver</button>
+                          }
+
+                        </div>
+                    }
 
 
 
-                <div className='description'>
-                  <div>Açıklama</div>
-                  <p>{product.description}</p>
-                </div>
+                    <div className='description'>
+                      <div>Açıklama</div>
+                      <p>{product.description}</p>
+                    </div>
 
-              </div >
-            </>
+                  </div >
+                </>
+            )
         }
       </div >
       <OfferModal
