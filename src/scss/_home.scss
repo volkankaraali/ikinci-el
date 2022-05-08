@@ -249,11 +249,11 @@
             }
 
             .products{
-                gap: 15px 10px;
+                gap: 10px 7px;
                 margin-bottom: 0px;
                 justify-content: center;
                 .productCard{
-                    max-width: 148px;
+                    max-width: 173px;
                     height: 266px;
 
                     .body{
@@ -290,7 +290,7 @@
             }
             .products{
                 gap: 10px 0px;
-                
+                justify-content: center;
                 .productCard{
                     width: 290px;
                     height: 270px;
