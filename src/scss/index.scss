@@ -58,11 +58,29 @@ html, body, #root, .App {
     top: 90px;
     right: 11px;
 }
-@media screen and (max-width:375px) {
+@media screen and (min-width:321px) and (max-width:375px) {
     //all toast message (error and success)
     .chakra-toast__inner{
         position: relative;
-        top: 80px;
+        top: 10px;
         right: 4px;
+    }
+}
+
+@media screen and (max-width:320px) {
+    //all toast message (error and success)
+
+    .errormes{
+        width: 310px;
+    }
+
+    .successmes{
+        width: 310px;
+    }
+
+    .chakra-toast__inner{
+        position: relative;
+        top: 10px;
+        right: 0px;
     }
 }

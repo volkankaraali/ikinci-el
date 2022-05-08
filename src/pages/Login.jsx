@@ -27,7 +27,7 @@ function Login() {
     const res = await getLogin(auth.email, auth.password);
     if (res.status === 400) {
       console.log(res.message);
-      useDisplayErrorMess(res.message);
+      useDisplayErrorMess('E-postanız veya şifreniz hatalı.');
       setLoading(false);
     }
     else {
