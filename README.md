@@ -23,6 +23,13 @@ cookie'nin temizlenmesi için bir kısıtlama bulunmuyor. Kullanıcı, hesabım 
 herhangi bir ürüne satın alma veya teklif vermesine izin verilmez, ekranda hata mesajı ile karşılaşır. Üye Girişi ve Kayıt Ol ekranları, kullanıcı giriş yapmış ise
 ana sayfaya yönlendirme yapmaktadır. 
 
+# Proje Yapısı ve Çalışma Şekli
+ * Projede 2 tane context yapısı bulunmakta. Bir tanesi AuthContext; kullanıcı yetkilendirmesini yönetmek için kullanılır, diğeri ise ProductContext;apiden tüm ürünleri çekip ilgili componentlere sağlar. Projede 2 adres(ürün ekleme ve hesabım) için yetkilendirme yapılması gerekmektedir. Bu nedenle **react-rooter-dom** ile bu iki adresin render edilmeden önce yetkilendirilmesine bakılır. 
+ * Kullanıcı, üye olurken veya giriş yaparken serverden gelen token'ı cookie'ye Auth_Token olarak kaydedilir. RequiredAuth componenti içerisinde, cookie'den okunan token varsa kullanıcı ilgili ekrana yönlendirilir (ürün ekle ya da hesabım), eğer yoksa giriş yapma ekranına yönlendirilir.
+ * Kullanıcı, hesabım sayfasından çıkış yapmadığı sürece AuthContext içerisinde her sayfaya gelişinde, cookie'de bulunan token ile servere kullanıcı bilgilerinin alınması için istek atılır ve auth state'ine eklenir. Yetkilendirme gereken işlemlerin kontrolü bu state üzerinden yapılır. 
+ * Apiye yapılacak isteklerde 2 farklı yapı oluşturuldu. Token gerektiren istekler için, interceptors eklenerek her istek öncesi **axios**'un otomatik tokeni eklemesi sağlandı. 
+ * Projenin tasarımları **scss** kullanılarak yapıldı. Bunun yanında, satın alma ve teklif verme modalları; giriş yapma/üye olma ve satın alma/teklif verme(yetkilendirme kontrolü) hata mesajları için toast;hesabım ekranındaki tab componenti için **chakra-ui**;Ürün ekleme ekranında kateogri,renk,marka ve kulllanım durumu seçimleri için **mantine** kullanıldı. Form gerektiren yerlerde **formik** kullanıldı (Giriş yapma, üye girşi ve ürün ekleme), doğrulamaları için **yup** kullanıldı.
+
 ## Dosya Yapısı
 
 * ### index.jsx
