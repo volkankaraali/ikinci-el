@@ -29,7 +29,7 @@ function Register() {
     const res = await getRegister(auth.email, auth.email, auth.password);
     if (res.status === 400) {
       console.log(res.message);
-      useDisplayErrorMess(res.message);
+      useDisplayErrorMess('E-posta daha önceden alındı.');
       setLoading(false);
     }
     else {
